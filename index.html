@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saud Alanazi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            var stored = localStorage.getItem('theme');
+            var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+            if (stored === 'light' || (!stored && prefersLight)) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a href="#top" class="brand">Saud Alanazi</a>
+            <nav class="nav-links">
+                <a href="#whoami">About</a>
+                <a href="#certs">Certifications</a>
+                <a href="#writeups">Write-ups</a>
+                <a href="#connect">Contact</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+                <i class="icon-moon">&#9789;</i>
+                <i class="icon-sun">&#9728;</i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+        <div class="hero-content">
+            <p class="kicker">Offensive Security</p>
+            <h1 class="hero-title">Saud Alanazi</h1>
+            <p class="hero-role">Penetration Tester &amp; Red Team Operator</p>
+            <hr class="rule">
+            <p class="hero-desc">Noting to say just yet</p>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <!-- 2) Certifications -->
+        <section class="section" id="certs">
+            <p class="kicker">Certifications</p>
+            <div class="cert-list">
+
+                 <a href="Cert/eMAPT.pdf" target="_blank" class="cert-row">
+                    <div class="cert-row-text">
+                        <h3>eMAPT</h3>
+                        <p>Mobile Application Penetration Tester</p>
+                        <span class="cert-issuer">INE Security</span>
+                    </div>
+                    <div class="cert-thumb">
+                        <img src="Cert/eMAPT_page-0001.jpg" alt="eMAPT Certificate">
+                    </div>
+                </a>
+
+                <a href="Cert/eWPTXv3.pdf" target="_blank" class="cert-row">
+                    <div class="cert-row-text">
+                        <h3>eWPTXv3</h3>
+                        <p>Web Application Penetration Tester eXtreme</p>
+                        <span class="cert-issuer">INE Security</span>
+                    </div>
+                    <div class="cert-thumb">
+                        <img src="Cert/eWPTXv3_page-0001.jpg" alt="eWPTXv3 Certificate">
+                    </div>
+                </a>
+                <a href="Cert/eCPPT.pdf" target="_blank" class="cert-row">
+                    <div class="cert-row-text">
+                        <h3>eCPPTv2</h3>
+                        <p>Certified Professional Penetration Tester</p>
+                        <span class="cert-issuer">INE Security</span>
+                    </div>
+                    <div class="cert-thumb">
+                        <img src="Cert/eCPPT_page-0001.jpg" alt="eCPPT Certificate">
+                    </div>
+                </a>
+               
+                <a href="Cert/eJPT.pdf" target="_blank" class="cert-row">
+                    <div class="cert-row-text">
+                        <h3>eJPT</h3>
+                        <p>Junior Penetration Tester</p>
+                        <span class="cert-issuer">INE Security</span>
+                    </div>
+                    <div class="cert-thumb">
+                        <img src="Cert/eJPT_page-0001.jpg" alt="eJPT Certificate">
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 3) Write-ups -->
+        <section class="section" id="writeups">
+            <p class="kicker">Write-ups</p>
+            <p class="about-text">Nothing published yet</p>
+
+            <!--
+              When ready, add entries here following this pattern:
+
+              <div class="cert-list">
+                  <a href="writeups/example.html" class="cert-row">
+                      <div class="cert-row-text">
+                          <h3>Write-up Title</h3>
+                          <p>One-line summary of what it covers.</p>
+                          <span class="cert-issuer">Jan 2026</span>
+                      </div>
+                  </a>
+              </div>
+            -->
+        </section>
+
+        <!-- 4) Connect -->
+        <section class="section connect" id="connect">
+            <p class="kicker">Connect</p>
+            <p class="about-text">Get in touch for collaborations and inquiries.</p>
+            <div class="connect-links">
+                <a href="https://x.com/reouii" target="_blank">X / Twitter</a>
+                <a href="https://linkedin.com/in/0xSaud" target="_blank">LinkedIn</a>
+            </div>
+        </section>
+
+        <footer>
+            <p class="copy">&copy; 2026 Saud Alanazi</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
