@@ -1,128 +1,248 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سعود العنزي</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script>
-        (function () {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>سعود العنزي — مختبر اختراق ومختص ريد تيم</title>
+<meta name="description" content="سعود العنزي، مختبر اختراق وصائد ثغرات متخصص في أمن تطبيقات الويب: ثغرات منطق العمل ونقاط الحقن وثغرات التحكم بالصلاحيات.">
+<meta name="author" content="سعود العنزي">
+
+<link rel="canonical" href="https://0xsaud.github.io/ar.html">
+<link rel="alternate" hreflang="ar" href="https://0xsaud.github.io/ar.html">
+<link rel="alternate" hreflang="en" href="https://0xsaud.github.io/">
+<link rel="alternate" hreflang="x-default" href="https://0xsaud.github.io/">
+
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="سعود العنزي">
+<meta property="og:title" content="سعود العنزي — مختبر اختراق ومختص ريد تيم">
+<meta property="og:description" content="مختبر اختراق وصائد ثغرات متخصص في أمن تطبيقات الويب.">
+<meta property="og:url" content="https://0xsaud.github.io/ar.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@reouii">
+
+<meta name="theme-color" content="#111010" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+
+<script>
+    /* Applied before first paint so the theme never flashes. */
+    (function () {
+        var el = document.documentElement;
+        try {
             var stored = localStorage.getItem('theme');
-            var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-            if (stored === 'light' || (!stored && prefersLight)) {
-                document.documentElement.setAttribute('data-theme', 'light');
-            }
-        })();
-    </script>
+            var light = stored ? stored === 'light'
+                : window.matchMedia('(prefers-color-scheme: light)').matches;
+            if (light) el.setAttribute('data-theme', 'light');
+        } catch (err) { /* storage unavailable — fall back to dark */ }
+    })();
+</script>
 </head>
+
 <body>
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
 
-    <!-- Navbar -->
-    <header class="navbar">
-        <div class="navbar-inner">
-            <a href="#top" class="brand">سعود العنزي</a>
-            <nav class="nav-links">
-                <a href="#whoami">نبذة</a>
-                <a href="#certs">الشهادات</a>
-                <a href="#writeups">كتابات تقنية</a>
-                <a href="#connect">تواصل</a>
-            </nav>
-            <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الفاتح والداكن">
-                <i class="icon-moon">&#9789;</i>
-                <i class="icon-sun">&#9728;</i>
+<header class="site-header">
+    <div class="wrap header-inner">
+        <a class="brand" href="#top">سعود العنزي</a>
+
+        <nav class="nav" aria-label="أقسام الصفحة">
+            <ul>
+                <li><a href="#about">نبذة</a></li>
+                <li><a href="#certifications">الشهادات</a></li>
+                <li><a href="#writeups">كتابات تقنية</a></li>
+                <li><a href="#contact">تواصل</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-btn" id="theme-toggle" type="button"
+                    aria-pressed="false" title="تبديل الوضع الفاتح والداكن">
+                <span class="visually-hidden">تبديل الوضع الفاتح والداكن</span>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+                </svg>
             </button>
-            <a href="index.html" class="lang-switch">EN</a>
+            <a class="lang-switch" href="index.html" lang="en" hreflang="en" title="English version">EN</a>
         </div>
-    </header>
+    </div>
+</header>
 
-    <!-- Hero -->
+<main id="main">
+
     <section class="hero" id="top">
-        <div class="hero-content">
-            <p class="kicker">أمن هجومي</p>
-            <h1 class="hero-title">سعود العنزي</h1>
-            <p class="hero-role">مختبر اختراق & مختص ريد تيم</p>
-            <hr class="rule">
+        <div class="wrap">
+            <p class="kicker" data-reveal>أمن هجومي</p>
+            <h1 class="hero-title" data-reveal>سعود العنزي</h1>
+            <p class="hero-role" data-reveal>مختبر اختراق ومختص ريد تيم</p>
+            <hr class="rule" data-reveal>
+            <p class="hero-desc" data-reveal>
+                أساعد المؤسسات على اكتشاف الثغرات الأمنية ومعالجتها قبل أن يستغلها المهاجمون،
+                من خلال اختبارات الاختراق وعمليات الفريق الأحمر.
+            </p>
+            <div class="hero-cta" data-reveal>
+                <a class="btn btn-primary" href="#certifications">استعراض الشهادات</a>
+                <a class="btn btn-ghost" href="#contact">تواصل معي</a>
+            </div>
         </div>
     </section>
 
-    <div class="container">
+    <div class="wrap">
 
-        <!-- 1) About / whoami -->
-        <section class="section" id="whoami">
-            <p class="kicker">من انا</p>
-            <p class="about-text">أنا سعود العنزي، مختبر اختراق وصائد ثغرات. يتركز عملي على أمن تطبيقات الويب، البحث عن ثغرات منطق العمل ونقاط الحقن وثغرات التحكم بالصلاحيات، والإبلاغ عنها</p>
+        <section class="section" id="about" aria-labelledby="about-title">
+            <div class="section-head" data-reveal>
+                <p class="kicker">من أنا</p>
+                <h2 id="about-title">نبذة</h2>
+            </div>
+            <p class="lead" data-reveal>
+                أنا سعود العنزي، مختبر اختراق وصائد ثغرات. يتركز عملي على أمن تطبيقات الويب:
+                البحث عن ثغرات منطق العمل ونقاط الحقن وثغرات التحكم بالصلاحيات التي تفوتها
+                أدوات الفحص الآلي، ثم الإبلاغ عنها عبر الإفصاح المسؤول.
+            </p>
         </section>
 
-        <!-- 2) Certifications -->
-        <section class="section" id="certs">
-            <p class="kicker">الشهادات</p>
-            <div class="cert-grid">
-                <a href="Cert/eWPTXv3.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eWPTXv3_page-0001.jpg" alt="شهادة eWPTXv3">
-                    </div>
-                    <div class="cert-card-text">
-                        <h3>eWPTXv3</h3>
-                        <p>اختبار اختراق متقدم لتطبيقات الويب</p>
-                        <span class="cert-issuer">INE Security</span>
-                    </div>
+        <section class="section" id="certifications" aria-labelledby="certs-title">
+            <div class="section-head" data-reveal>
+                <p class="kicker">الاعتمادات</p>
+                <h2 id="certs-title">الشهادات</h2>
+            </div>
+
+            <ul class="cert-grid">
+                <li data-reveal>
+                    <a class="cert-card" href="Cert/eWPTXv3_page-0001.jpg" data-lightbox="eWPTXv3">
+                        <div class="cert-thumb">
+                            <img src="Cert/eWPTXv3_page-0001.jpg" width="1650" height="1275"
+                                 loading="lazy" decoding="async"
+                                 alt="شهادة eWPTXv3 الصادرة لسعود العنزي من INE Security">
+                        </div>
+                        <div class="cert-body">
+                            <h3>eWPTXv3</h3>
+                            <p>اختبار اختراق متقدم لتطبيقات الويب</p>
+                            <span class="tag">INE Security</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-reveal>
+                    <a class="cert-card" href="Cert/eCPPT_page-0001.jpg" data-lightbox="eCPPTv2">
+                        <div class="cert-thumb">
+                            <img src="Cert/eCPPT_page-0001.jpg" width="1650" height="1275"
+                                 loading="lazy" decoding="async"
+                                 alt="شهادة eCPPTv2 الصادرة لسعود العنزي من INE Security">
+                        </div>
+                        <div class="cert-body">
+                            <h3>eCPPTv2</h3>
+                            <p>مختبر اختراق محترف معتمد</p>
+                            <span class="tag">INE Security</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-reveal>
+                    <a class="cert-card" href="Cert/eMAPT_page-0001.jpg" data-lightbox="eMAPT">
+                        <div class="cert-thumb">
+                            <img src="Cert/eMAPT_page-0001.jpg" width="1650" height="1275"
+                                 loading="lazy" decoding="async"
+                                 alt="شهادة eMAPT الصادرة لسعود العنزي من INE Security">
+                        </div>
+                        <div class="cert-body">
+                            <h3>eMAPT</h3>
+                            <p>اختبار اختراق تطبيقات الجوال</p>
+                            <span class="tag">INE Security</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-reveal>
+                    <a class="cert-card" href="Cert/eJPT_page-0001.jpg" data-lightbox="eJPTv2">
+                        <div class="cert-thumb">
+                            <img src="Cert/eJPT_page-0001.jpg" width="1650" height="1275"
+                                 loading="lazy" decoding="async"
+                                 alt="شهادة eJPTv2 الصادرة لسعود العنزي من INE Security">
+                        </div>
+                        <div class="cert-body">
+                            <h3>eJPTv2</h3>
+                            <p>مختبر اختراق مبتدئ</p>
+                            <span class="tag">INE Security</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section" id="writeups" aria-labelledby="writeups-title">
+            <div class="section-head" data-reveal>
+                <p class="kicker">أبحاث</p>
+                <h2 id="writeups-title">كتابات تقنية</h2>
+            </div>
+
+            <div class="note" data-reveal>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                    <path d="M14 2v6h6M9 13h6m-6 4h4"></path>
+                </svg>
+                <p>
+                    ما فيه شي منشور لين الحين — الكتابات عن الثغرات والمهام التقنية بتنزل هنا
+                    أول ما تكون جاهزة.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="contact" aria-labelledby="contact-title">
+            <div class="section-head" data-reveal>
+                <p class="kicker">تواصل</p>
+                <h2 id="contact-title">تواصل معي</h2>
+            </div>
+            <p class="lead" data-reveal>تواصل معي للتعاون والاستفسارات.</p>
+
+            <div class="link-row" data-reveal>
+                <a class="btn btn-ghost" href="https://twitter.com/reouii"
+                   target="_blank" rel="noopener me">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M18.9 2H22l-6.8 7.8L23 22h-6.4l-5-6.5L5.8 22H2.7l7.3-8.3L2 2h6.6l4.5 6L18.9 2Zm-1.1 18h1.7L8.3 3.8H6.5L17.8 20Z"></path>
+                    </svg>
+                    <span dir="ltr">X / Twitter</span>
                 </a>
-                <a href="Cert/eCPPT.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eCPPT_page-0001.jpg" alt="شهادة eCPPT">
-                    </div>
-                    <div class="cert-card-text">
-                        <h3>eCPPTv2</h3>
-                        <p>مختبر اختراق محترف معتمد</p>
-                        <span class="cert-issuer">INE Security</span>
-                    </div>
-                </a>
-                <a href="Cert/eMAPT.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eMAPT_page-0001.jpg" alt="شهادة eMAPT">
-                    </div>
-                    <div class="cert-card-text">
-                        <h3>eMAPT</h3>
-                        <p>اختبار اختراق تطبيقات الجوال</p>
-                        <span class="cert-issuer">INE Security</span>
-                    </div>
-                </a>
-                <a href="Cert/eJPT.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eJPT_page-0001.jpg" alt="شهادة eJPT">
-                    </div>
-                    <div class="cert-card-text">
-                        <h3>eJPT</h3>
-                        <p>مختبر اختراق مبتدئ</p>
-                        <span class="cert-issuer">INE Security</span>
-                    </div>
+                <a class="btn btn-ghost" href="https://linkedin.com/in/0xSaud"
+                   target="_blank" rel="noopener me">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.4 8.75 22 11 22 14v7h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21h-4V9Z"></path>
+                    </svg>
+                    <span dir="ltr">LinkedIn</span>
                 </a>
             </div>
         </section>
 
-        <!-- 3) Write-ups -->
-        <section class="section" id="writeups">
-            <p class="kicker">كتابات تقنية</p>
-            <p class="about-text">ما فيه شي منشور لين الحين — الكتابات عن الثغرات والمهام التقنية بتنزل هنا أول ما تكون جاهزة.</p>
-        </section>
-
-        <!-- 4) Connect -->
-        <section class="section connect" id="connect">
-            <p class="kicker">تواصل</p>
-            <p class="about-text">تواصل معي للتعاون والاستفسارات.</p>
-            <div class="connect-links">
-                <a href="https://twitter.com/reouii" target="_blank">X / Twitter</a>
-                <a href="https://linkedin.com/in/0xSaud" target="_blank">LinkedIn</a>
-            </div>
-        </section>
-
-        <footer>
-            <p class="copy">&copy; 2026 سعود العنزي، الرياض</p>
+        <footer class="site-footer">
+            <p>&copy; <span id="year">2026</span> سعود العنزي، الرياض</p>
+            <p><a href="index.html" lang="en" hreflang="en">English</a></p>
         </footer>
+
     </div>
-    <script src="script.js"></script>
+</main>
+
+<dialog class="lightbox" id="cert-dialog" aria-labelledby="cert-dialog-title">
+    <img alt="">
+    <div class="lightbox-bar">
+        <h3 id="cert-dialog-title"></h3>
+        <form class="lightbox-actions" method="dialog">
+            <a class="btn btn-ghost" data-source href="#" target="_blank" rel="noopener">عرض بالحجم الكامل</a>
+            <button class="btn btn-ghost" type="submit">إغلاق</button>
+        </form>
+    </div>
+</dialog>
+
+<script src="script.js" defer></script>
 </body>
 </html>
