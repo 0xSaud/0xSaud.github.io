@@ -1,143 +1,285 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saud Alanazi</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script>
-        (function () {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Saud Alanazi — Penetration Tester &amp; Red Team Operator</title>
+<meta name="description" content="Saud Alanazi is a penetration tester and bug hunter focused on web application security — business logic flaws, injection points and broken access control.">
+<meta name="author" content="Saud Alanazi">
+
+<link rel="canonical" href="https://0xsaud.github.io/">
+<link rel="alternate" hreflang="en" href="https://0xsaud.github.io/">
+<link rel="alternate" hreflang="ar" href="https://0xsaud.github.io/ar.html">
+<link rel="alternate" hreflang="x-default" href="https://0xsaud.github.io/">
+
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_SA">
+<meta property="og:site_name" content="Saud Alanazi">
+<meta property="og:title" content="Saud Alanazi — Penetration Tester &amp; Red Team Operator">
+<meta property="og:description" content="Penetration tester and bug hunter focused on web application security.">
+<meta property="og:url" content="https://0xsaud.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@reouii">
+
+<meta name="theme-color" content="#111010" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+
+<script>
+    /* Applied before first paint so the theme never flashes. */
+    (function () {
+        var el = document.documentElement;
+        try {
             var stored = localStorage.getItem('theme');
-            var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-            if (stored === 'light' || (!stored && prefersLight)) {
-                document.documentElement.setAttribute('data-theme', 'light');
-            }
-        })();
-    </script>
+            var light = stored ? stored === 'light'
+                : window.matchMedia('(prefers-color-scheme: light)').matches;
+            if (light) el.setAttribute('data-theme', 'light');
+        } catch (err) { /* storage unavailable — fall back to dark */ }
+    })();
+</script>
 </head>
+
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Navbar -->
-    <header class="navbar">
-        <div class="navbar-inner">
-            <a href="#top" class="brand">Saud Alanazi</a>
-            <nav class="nav-links">
-                <a href="#whoami">About</a>
-                <a href="#certs">Certifications</a>
-                <a href="#writeups">Write-ups</a>
-                <a href="#connect">Contact</a>
-            </nav>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
-                <i class="icon-moon">&#9789;</i>
-                <i class="icon-sun">&#9728;</i>
+<header class="site-header">
+    <div class="wrap header-inner">
+        <a class="brand" href="#top">Saud Alanazi</a>
+
+        <nav class="nav" aria-label="Sections">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#writeups">Write-ups</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-btn" id="theme-toggle" type="button"
+                    aria-pressed="false" title="Toggle light and dark theme">
+                <span class="visually-hidden">Toggle light and dark theme</span>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+                </svg>
             </button>
-            <a href="ar.html" class="lang-switch">AR</a>
+            <a class="lang-switch" href="ar.html" lang="ar" hreflang="ar" title="النسخة العربية">AR</a>
         </div>
-    </header>
+    </div>
+</header>
 
-    <!-- Hero -->
+<main id="main">
+
     <section class="hero" id="top">
-        <div class="hero-content">
-            <p class="kicker">Offensive Security</p>
-            <h1 class="hero-title">Saud Alanazi</h1>
-            <p class="hero-role">Penetration Tester &amp; Red Team Operator</p>
-            <hr class="rule">
-            <p class="hero-desc">I help organizations find and fix security weaknesses before attackers do &mdash; through hands-on penetration testing and red team engagements.</p>
+        <div class="wrap">
+            <p class="kicker" data-reveal>Offensive Security</p>
+            <h1 class="hero-title" data-reveal>Saud Alanazi</h1>
+            <p class="hero-role" data-reveal>Penetration Tester &amp; Red Team Operator</p>
+            <hr class="rule" data-reveal>
+            <p class="hero-desc" data-reveal>
+                I help organizations find and fix security weaknesses before attackers do —
+                through hands-on penetration testing and red team engagements.
+            </p>
+            <div class="hero-cta" data-reveal>
+                <a class="btn btn-primary" href="#certifications">View certifications</a>
+                <a class="btn btn-ghost" href="#contact">Get in touch</a>
+            </div>
         </div>
     </section>
 
-    <div class="container">
+    <div class="wrap">
 
-        <!-- 1) About / whoami -->
-        <section class="section" id="whoami">
-            <p class="kicker">whoami</p>
-            <p class="about-text">I'm Saud Alanazi, a penetration tester and BugHunter. My work centers on web application security &mdash; hunting for business logic flaws, injection points, and broken access control that automated scanning misses, then reporting them through responsible disclosure.</p>
-        </section>
-
-        <!-- 2) Certifications -->
-        <section class="section" id="certs">
-            <p class="kicker">Certifications</p>
-            <div class="cert-grid">
-                <a href="Cert/eWPTXv3.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eWPTXv3_page-0001.jpg" alt="eWPTXv3 Certificate">
-                    </div>
-                    <div class="cert-card-text">
-                        <h3>eWPTXv3</h3>
-                        <p>Web Application Penetration Tester eXtreme</p>
-                        <span class="cert-issuer">INE Security</span>
-                    </div>
-                </a>
-                <a href="Cert/eCPPT.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eCPPT_page-0001.jpg" alt="eCPPT Certificate">
-                    </div>
-                    <div class="cert-card-text">
-                        <h3>eCPPTv2</h3>
-                        <p>Certified Professional Penetration Tester</p>
-                        <span class="cert-issuer">INE Security</span>
-                    </div>
-                </a>
-                <a href="Cert/eMAPT.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eMAPT_page-0001.jpg" alt="eMAPT Certificate">
-                    </div>
-                    <div class="cert-card-text">
-                        <h3>eMAPT</h3>
-                        <p>Mobile Application Penetration Tester</p>
-                        <span class="cert-issuer">INE Security</span>
-                    </div>
-                </a>
-                <a href="Cert/eJPT.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eJPT_page-0001.jpg" alt="eJPT Certificate">
-                    </div>
-                    <div class="cert-card-text">
-                        <h3>eJPTv2</h3>
-                        <p>Junior Penetration Tester</p>
-                        <span class="cert-issuer">INE Security</span>
-                    </div>
-                </a>
+        <section class="section" id="about" aria-labelledby="about-title">
+            <div class="section-head" data-reveal>
+                <p class="kicker">whoami</p>
+                <h2 id="about-title">About</h2>
             </div>
+            <p class="lead" data-reveal>
+                I'm Saud Alanazi, a penetration tester and bug hunter. My work centers on web
+                application security — hunting for business logic flaws, injection points and
+                broken access control that automated scanning misses, then reporting them
+                through responsible disclosure.
+            </p>
         </section>
 
-        <!-- 3) Write-ups -->
-        <section class="section" id="writeups">
-            <p class="kicker">Write-ups</p>
-            <p class="about-text">Nothing published yet &mdash; write-ups on vulnerabilities and technical tasks will be posted here as soon as they are ready.</p>
+        <section class="section" id="certifications" aria-labelledby="certs-title">
+            <div class="section-head" data-reveal>
+                <p class="kicker">Credentials</p>
+                <h2 id="certs-title">Certifications</h2>
+            </div>
+
+            <ul class="cert-grid">
+                <li data-reveal>
+                    <a class="cert-card" href="Cert/eWPTXv3_page-0001.jpg" data-lightbox="eWPTXv3">
+                        <div class="cert-thumb">
+                            <img src="Cert/eWPTXv3_page-0001.jpg" width="1650" height="1275"
+                                 loading="lazy" decoding="async"
+                                 alt="eWPTXv3 certificate issued to Saud Alanazi by INE Security">
+                        </div>
+                        <div class="cert-body">
+                            <h3>eWPTXv3</h3>
+                            <p>Web Application Penetration Tester eXtreme</p>
+                            <span class="tag">INE Security</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-reveal>
+                    <a class="cert-card" href="Cert/eCPPT_page-0001.jpg" data-lightbox="eCPPTv2">
+                        <div class="cert-thumb">
+                            <img src="Cert/eCPPT_page-0001.jpg" width="1650" height="1275"
+                                 loading="lazy" decoding="async"
+                                 alt="eCPPTv2 certificate issued to Saud Alanazi by INE Security">
+                        </div>
+                        <div class="cert-body">
+                            <h3>eCPPTv2</h3>
+                            <p>Certified Professional Penetration Tester</p>
+                            <span class="tag">INE Security</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-reveal>
+                    <a class="cert-card" href="Cert/eMAPT_page-0001.jpg" data-lightbox="eMAPT">
+                        <div class="cert-thumb">
+                            <img src="Cert/eMAPT_page-0001.jpg" width="1650" height="1275"
+                                 loading="lazy" decoding="async"
+                                 alt="eMAPT certificate issued to Saud Alanazi by INE Security">
+                        </div>
+                        <div class="cert-body">
+                            <h3>eMAPT</h3>
+                            <p>Mobile Application Penetration Tester</p>
+                            <span class="tag">INE Security</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-reveal>
+                    <a class="cert-card" href="Cert/eJPT_page-0001.jpg" data-lightbox="eJPTv2">
+                        <div class="cert-thumb">
+                            <img src="Cert/eJPT_page-0001.jpg" width="1650" height="1275"
+                                 loading="lazy" decoding="async"
+                                 alt="eJPTv2 certificate issued to Saud Alanazi by INE Security">
+                        </div>
+                        <div class="cert-body">
+                            <h3>eJPTv2</h3>
+                            <p>Junior Penetration Tester</p>
+                            <span class="tag">INE Security</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section" id="writeups" aria-labelledby="writeups-title">
+            <div class="section-head" data-reveal>
+                <p class="kicker">Research</p>
+                <h2 id="writeups-title">Write-ups</h2>
+            </div>
+
+            <div class="note" data-reveal>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                    <path d="M14 2v6h6M9 13h6m-6 4h4"></path>
+                </svg>
+                <p>
+                    Nothing published yet — write-ups on vulnerabilities and technical tasks
+                    will be posted here as soon as they are ready.
+                </p>
+            </div>
 
             <!--
-              When ready, add entries here following this pattern:
+              To publish, replace the .note block above with:
 
-              <div class="cert-list">
-                  <a href="writeups/example.html" class="cert-row">
-                      <div class="cert-row-text">
-                          <h3>Write-up Title</h3>
-                          <p>One-line summary of what it covers.</p>
-                          <span class="cert-issuer">Jan 2026</span>
-                      </div>
-                  </a>
-              </div>
+              <ul class="post-list">
+                  <li><a class="post" href="writeups/example.html">
+                      <span class="post-title">Write-up title</span>
+                      <span class="post-sub">One-line summary of what it covers.</span>
+                      <time class="tag" datetime="2026-01">Jan 2026</time>
+                  </a></li>
+              </ul>
             -->
         </section>
 
-        <!-- 4) Connect -->
-        <section class="section connect" id="connect">
-            <p class="kicker">Connect</p>
-            <p class="about-text">Get in touch for collaborations and inquiries.</p>
-            <div class="connect-links">
-                <a href="https://twitter.com/reouii" target="_blank">X / Twitter</a>
-                <a href="https://linkedin.com/in/0xSaud" target="_blank">LinkedIn</a>
+        <section class="section" id="contact" aria-labelledby="contact-title">
+            <div class="section-head" data-reveal>
+                <p class="kicker">Connect</p>
+                <h2 id="contact-title">Contact</h2>
+            </div>
+            <p class="lead" data-reveal>Get in touch for collaborations and inquiries.</p>
+
+            <div class="link-row" data-reveal>
+                <a class="btn btn-ghost" href="https://twitter.com/reouii"
+                   target="_blank" rel="noopener me">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M18.9 2H22l-6.8 7.8L23 22h-6.4l-5-6.5L5.8 22H2.7l7.3-8.3L2 2h6.6l4.5 6L18.9 2Zm-1.1 18h1.7L8.3 3.8H6.5L17.8 20Z"></path>
+                    </svg>
+                    X / Twitter
+                </a>
+                <a class="btn btn-ghost" href="https://linkedin.com/in/0xSaud"
+                   target="_blank" rel="noopener me">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.4 8.75 22 11 22 14v7h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21h-4V9Z"></path>
+                    </svg>
+                    LinkedIn
+                </a>
             </div>
         </section>
 
-        <footer>
-            <p class="copy">&copy; 2026 Saud Alanazi</p>
+        <footer class="site-footer">
+            <p>&copy; <span id="year">2026</span> Saud Alanazi</p>
+            <p><a href="ar.html" lang="ar" hreflang="ar">العربية</a></p>
         </footer>
+
     </div>
-    <script src="script.js"></script>
+</main>
+
+<dialog class="lightbox" id="cert-dialog" aria-labelledby="cert-dialog-title">
+    <img alt="">
+    <div class="lightbox-bar">
+        <h3 id="cert-dialog-title"></h3>
+        <form class="lightbox-actions" method="dialog">
+            <a class="btn btn-ghost" data-source href="#" target="_blank" rel="noopener">Open full size</a>
+            <button class="btn btn-ghost" type="submit">Close</button>
+        </form>
+    </div>
+</dialog>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Saud Alanazi",
+    "alternateName": "سعود العنزي",
+    "url": "https://0xsaud.github.io/",
+    "jobTitle": "Penetration Tester",
+    "description": "Penetration tester and bug hunter focused on web application security.",
+    "knowsLanguage": ["en", "ar"],
+    "sameAs": [
+        "https://twitter.com/reouii",
+        "https://linkedin.com/in/0xSaud",
+        "https://github.com/0xSaud"
+    ],
+    "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "name": "eWPTXv3", "credentialCategory": "certificate", "recognizedBy": { "@type": "Organization", "name": "INE Security" } },
+        { "@type": "EducationalOccupationalCredential", "name": "eCPPTv2", "credentialCategory": "certificate", "recognizedBy": { "@type": "Organization", "name": "INE Security" } },
+        { "@type": "EducationalOccupationalCredential", "name": "eMAPT", "credentialCategory": "certificate", "recognizedBy": { "@type": "Organization", "name": "INE Security" } },
+        { "@type": "EducationalOccupationalCredential", "name": "eJPTv2", "credentialCategory": "certificate", "recognizedBy": { "@type": "Organization", "name": "INE Security" } }
+    ]
+}
+</script>
+
+<script src="script.js" defer></script>
 </body>
 </html>
