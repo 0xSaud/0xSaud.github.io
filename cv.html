@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saud Alanazi — CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            var stored = localStorage.getItem('theme');
+            var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+            if (stored === 'light' || (!stored && prefersLight)) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+    <style>
+        .cv {
+            padding: 70px 0 40px;
+        }
+
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 24px;
+            flex-wrap: wrap;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cv-name {
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .cv-role {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+        }
+
+        .cv-contact {
+            list-style: none;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: right;
+        }
+
+        .cv-contact a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cv-contact a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .cv-block {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 24px;
+            padding: 32px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cv-block .kicker {
+            margin: 4px 0 0;
+        }
+
+        .cv-block p,
+        .cv-block li {
+            color: var(--text-muted);
+        }
+
+        .cv-list {
+            list-style: none;
+        }
+
+        .cv-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+        }
+
+        .cv-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .cv-item {
+            margin-bottom: 18px;
+        }
+
+        .cv-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .cv-item-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .cv-item h3 {
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: 1.15rem;
+            color: var(--text);
+        }
+
+        .cv-item p {
+            font-size: 0.95rem;
+        }
+
+        .skill-group {
+            margin-bottom: 14px;
+        }
+
+        .skill-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-group h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .cv-actions {
+            display: flex;
+            gap: 28px;
+            padding: 32px 0 0;
+        }
+
+        .cv-actions a,
+        .cv-actions button {
+            font: inherit;
+            font-size: 0.95rem;
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            padding: 0 0 2px;
+            color: var(--text);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .cv-actions a:hover,
+        .cv-actions button:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        @media (max-width: 640px) {
+            .cv {
+                padding: 48px 0 24px;
+            }
+
+            .cv-name {
+                font-size: 2.1rem;
+            }
+
+            .cv-contact {
+                text-align: left;
+            }
+
+            .cv-block {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 16mm 16mm;
+        }
+
+        @media print {
+            :root,
+            :root[data-theme="light"] {
+                --bg: #ffffff;
+                --text: #1a1814;
+                --text-muted: #4a453d;
+                --accent: #8a6230;
+                --border: #d9d2c5;
+            }
+
+            body {
+                font-size: 12.5px;
+                line-height: 1.55;
+            }
+
+            .navbar,
+            .cv-actions,
+            footer {
+                display: none;
+            }
+
+            .container {
+                max-width: none;
+                padding: 0;
+            }
+
+            .cv {
+                padding: 0;
+            }
+
+            .cv-name {
+                font-size: 2.2rem;
+            }
+
+            .cv-header {
+                padding-bottom: 18px;
+            }
+
+            .cv-block {
+                grid-template-columns: 130px 1fr;
+                padding: 16px 0;
+                break-inside: avoid;
+            }
+
+            .cv-contact a {
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="brand">Saud Alanazi</a>
+            <nav class="nav-links">
+                <a href="index.html#whoami">About</a>
+                <a href="index.html#certs">Certifications</a>
+                <a href="cv.html">CV</a>
+                <a href="index.html#connect">Contact</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+                <i class="icon-moon">&#9789;</i>
+                <i class="icon-sun">&#9728;</i>
+            </button>
+            <a href="ar.html" class="lang-switch">AR</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="cv">
+
+            <div class="cv-header">
+                <div>
+                    <h1 class="cv-name">Saud Alanazi</h1>
+                    <p class="cv-role">Penetration Tester &amp; Red Team Operator</p>
+                </div>
+                <ul class="cv-contact">
+                    <li><a href="https://0xsaud.github.io">0xsaud.github.io</a></li>
+                    <li><a href="https://linkedin.com/in/0xSaud">linkedin.com/in/0xSaud</a></li>
+                    <li><a href="https://twitter.com/reouii">x.com/reouii</a></li>
+                </ul>
+            </div>
+
+            <section class="cv-block">
+                <p class="kicker">Profile</p>
+                <p>Offensive security practitioner focused on web application security, penetration testing and red team operations. I hunt for business logic flaws, injection points and broken access control that automated scanning misses, and report them through responsible disclosure. Holder of four INE Security certifications spanning web, network, mobile and advanced exploitation.</p>
+            </section>
+
+            <section class="cv-block">
+                <p class="kicker">Certifications</p>
+                <div>
+                    <div class="cv-item">
+                        <div class="cv-item-head">
+                            <h3>eWPTXv3</h3>
+                            <span class="cert-issuer">INE Security</span>
+                        </div>
+                        <p>Web Application Penetration Tester eXtreme</p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-item-head">
+                            <h3>eCPPTv2</h3>
+                            <span class="cert-issuer">INE Security</span>
+                        </div>
+                        <p>Certified Professional Penetration Tester</p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-item-head">
+                            <h3>eMAPT</h3>
+                            <span class="cert-issuer">INE Security</span>
+                        </div>
+                        <p>Mobile Application Penetration Tester</p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-item-head">
+                            <h3>eJPTv2</h3>
+                            <span class="cert-issuer">INE Security</span>
+                        </div>
+                        <p>Junior Penetration Tester</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cv-block">
+                <p class="kicker">Experience</p>
+                <div>
+                    <div class="cv-item">
+                        <div class="cv-item-head">
+                            <h3>Bug Bounty Hunter</h3>
+                            <span class="cert-issuer">Independent</span>
+                        </div>
+                        <ul class="cv-list">
+                            <li>Test production web applications for business logic flaws, injection vulnerabilities and broken access control.</li>
+                            <li>Write clear, reproducible reports and coordinate fixes through responsible disclosure.</li>
+                        </ul>
+                    </div>
+                    <!--
+                      Add roles here, newest first:
+
+                      <div class="cv-item">
+                          <div class="cv-item-head">
+                              <h3>Job Title — Company</h3>
+                              <span class="cert-issuer">2024 – Present</span>
+                          </div>
+                          <ul class="cv-list">
+                              <li>What you did and the result.</li>
+                          </ul>
+                      </div>
+                    -->
+                </div>
+            </section>
+
+            <section class="cv-block">
+                <p class="kicker">Skills</p>
+                <div>
+                    <div class="skill-group">
+                        <h3>Web Application Security</h3>
+                        <p>OWASP Top 10, business logic testing, access control &amp; IDOR, SQLi / XSS / SSRF / SSTI, authentication &amp; session flaws, API testing</p>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Network &amp; Infrastructure</h3>
+                        <p>Enumeration, exploitation, privilege escalation, pivoting, Active Directory attacks</p>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Mobile</h3>
+                        <p>Android &amp; iOS application testing, static and dynamic analysis, traffic interception</p>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Reporting</h3>
+                        <p>Risk-rated findings, reproducible proof of concept, remediation guidance</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cv-block">
+                <p class="kicker">Languages</p>
+                <p>Arabic (native) &middot; English (professional)</p>
+            </section>
+
+            <div class="cv-actions">
+                <button type="button" onclick="window.print()">Print / Save as PDF</button>
+                <a href="cv.pdf" target="_blank">Download PDF</a>
+            </div>
+        </main>
+
+        <footer>
+            <p class="copy">&copy; 2026 Saud Alanazi</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
