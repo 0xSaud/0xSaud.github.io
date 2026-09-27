@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Source for /cv.pdf (not published: Jekyll skips _ folders). Edit, then re-export to PDF. -->
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <script>
         (function () {
             var stored = localStorage.getItem('theme');
@@ -243,23 +244,6 @@
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="navbar-inner">
-            <a href="index.html" class="brand">Saud Alanazi</a>
-            <nav class="nav-links">
-                <a href="index.html#whoami">About</a>
-                <a href="index.html#certs">Certifications</a>
-                <a href="cv.html">CV</a>
-                <a href="index.html#connect">Contact</a>
-            </nav>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
-                <i class="icon-moon">&#9789;</i>
-                <i class="icon-sun">&#9728;</i>
-            </button>
-            <a href="ar.html" class="lang-switch">AR</a>
-        </div>
-    </header>
-
     <div class="container">
         <main class="cv">
 
@@ -369,17 +353,8 @@
                 <p class="kicker">Languages</p>
                 <p>Arabic (native) &middot; English (professional)</p>
             </section>
-
-            <div class="cv-actions">
-                <button type="button" onclick="window.print()">Print / Save as PDF</button>
-                <a href="cv.pdf" target="_blank">Download PDF</a>
-            </div>
         </main>
-
-        <footer>
-            <p class="copy">&copy; 2026 Saud Alanazi</p>
-        </footer>
     </div>
-    <script src="script.js"></script>
+    
 </body>
 </html>
