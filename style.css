@@ -1,346 +1,177 @@
+/* =========================================================
+   Saud Alanazi — "Memo"
+   A memo typed on an old typewriter. Static — nothing animates.
+   ========================================================= */
+
 :root {
-    --bg: #121110;
-    --text: #ece8e2;
-    --text-muted: #8f897d;
-    --accent: #b8905a;
-    --border: #29271f;
-    --font-display: 'Fraunces', 'IBM Plex Sans Arabic', Georgia, serif;
-    --font-body: 'Plus Jakarta Sans', 'IBM Plex Sans Arabic', system-ui, -apple-system, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    --desk: #2b2620;
+    --paper: #f3ecda;
+    --paper-edge: #e3d9c1;
+    --ink: #1f1d1a;
+    --ink-red: #a8251c;
+    --muted: #6d6556;
 }
 
-:root[data-theme="light"] {
-    --bg: #f6f3ee;
-    --text: #201d18;
-    --text-muted: #726b5e;
-    --accent: #9a6f36;
-    --border: #ddd6c9;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    transition: background-color 0.25s ease, color 0.25s ease;
+    min-height: 100vh;
+    background:
+        radial-gradient(900px 600px at 50% 10%, rgba(255, 220, 160, 0.10), transparent 70%),
+        repeating-linear-gradient(92deg, rgba(0,0,0,0.05) 0 2px, transparent 2px 9px),
+        var(--desk);
+    font-family: 'Special Elite', 'Courier New', monospace;
+    color: var(--ink);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.desk {
+    padding: 56px 16px 70px;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
+/* ---------- The sheet ---------- */
+.sheet {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 64px 68px 80px;
+    background:
+        radial-gradient(ellipse at 50% 40%, var(--paper) 55%, var(--paper-edge) 100%);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.4) inset,
+        0 30px 60px -20px rgba(0, 0, 0, 0.7),
+        0 6px 14px rgba(0, 0, 0, 0.35);
+    transform: rotate(-0.6deg);
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
-.container {
-    max-width: 760px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 24px;
+/* paper grain */
+.sheet::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Navbar */
-.navbar {
-    border-bottom: 1px solid var(--border);
-}
-
-.navbar-inner {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 28px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.brand {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--text);
-    text-decoration: none;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-}
-
-.nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.88rem;
-    transition: color 0.2s ease;
-}
-
-.nav-links a:hover {
-    color: var(--accent);
-}
-
-.theme-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
+/* a faint coffee ring, because of course */
+.sheet::after {
+    content: "";
+    position: absolute;
+    right: 38px;
+    bottom: 120px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-muted);
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    border: 7px solid rgba(120, 80, 30, 0.08);
+    box-shadow: inset 0 0 0 2px rgba(120, 80, 30, 0.05);
+    transform: rotate(18deg) scaleX(1.06);
+    pointer-events: none;
 }
 
-.theme-toggle:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-}
+.dateline { text-align: right; margin-bottom: 30px; }
 
-.theme-toggle .icon-moon { display: inline; }
-.theme-toggle .icon-sun { display: none; }
-
-:root[data-theme="light"] .theme-toggle .icon-moon { display: none; }
-:root[data-theme="light"] .theme-toggle .icon-sun { display: inline; }
-
-.lang-switch {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 34px;
-    padding: 0 4px;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-    transition: color 0.2s ease;
-}
-
-.lang-switch:hover {
-    color: var(--accent);
-}
-
-@media (max-width: 640px) {
-    .navbar-inner {
-        flex-wrap: wrap;
-        padding: 20px 20px;
-        gap: 12px 16px;
-    }
-
-    .brand {
-        font-size: 1.05rem;
-    }
-
-    .nav-links {
-        order: 3;
-        flex-basis: 100%;
-        gap: 20px;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .nav-links::-webkit-scrollbar {
-        display: none;
-    }
-
-    .nav-links a {
-        white-space: nowrap;
-    }
-}
-
-/* Kicker label */
-.kicker {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 20px;
-}
-
-/* Hero */
-.hero {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 110px 24px 90px;
-}
-
-.hero-title {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 3.4rem;
-    letter-spacing: -0.01em;
-    line-height: 1.1;
-    color: var(--text);
-    margin-bottom: 10px;
-}
-
-.hero-role {
-    font-family: var(--font-display);
-    font-style: italic;
+h1 {
     font-weight: 400;
-    font-size: 1.3rem;
-    color: var(--text-muted);
-    margin-bottom: 36px;
+    font-size: 1.9rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 18px;
 }
 
-.rule {
+h2 {
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    margin: 34px 0 10px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.memo { border-collapse: collapse; margin-bottom: 18px; }
+.memo td { padding: 0 0 2px; vertical-align: top; }
+.memo td:first-child { width: 84px; }
+
+hr {
     border: none;
-    border-top: 1px solid var(--border);
-    margin-bottom: 36px;
-    width: 64px;
+    border-top: 1.5px dashed var(--ink);
+    opacity: 0.55;
+    margin: 6px 0 24px;
 }
 
-.hero-desc {
-    max-width: 540px;
-    font-size: 1.05rem;
-    color: var(--text-muted);
-}
+p + p { margin-top: 16px; }
 
-@media (max-width: 600px) {
-    .hero {
-        padding: 70px 24px 60px;
-    }
+.red { color: var(--ink-red); }
 
-    .hero-title {
-        font-size: 2.3rem;
-    }
+s { text-decoration-thickness: 2px; text-decoration-color: var(--ink); }
 
-    .hero-role {
-        font-size: 1.05rem;
-    }
+.files { padding-left: 26px; }
+.files li { padding-left: 4px; }
+.files li.none { list-style: none; margin-left: -26px; }
+.files .when { color: var(--muted); }
 
-    .nav-links {
-        gap: 18px;
-    }
-}
-
-/* Sections */
-.section {
-    padding: 90px 0;
-    border-top: 1px solid var(--border);
-}
-
-.about-text {
-    max-width: 600px;
-    font-size: 1.1rem;
-    color: var(--text-muted);
-}
-
-/* Certifications grid */
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 28px;
-    margin-top: 8px;
-}
-
-.cert-card {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--border);
+a {
+    color: var(--ink-red);
     text-decoration: none;
-    transition: border-color 0.2s ease, opacity 0.2s ease;
+    border-bottom: 1px solid currentColor;
 }
 
-.cert-card:hover {
-    border-color: var(--accent);
-    opacity: 0.9;
+a:hover { background: rgba(168, 37, 28, 0.1); }
+
+.closing { margin-top: 38px; }
+
+/* handwritten signature */
+.sheet .sig {
+    display: block;
+    font-family: 'Homemade Apple', cursive;
+    font-size: 1.6rem;
+    color: #1d2e5c;
+    margin-top: 6px;
+    transform: rotate(-4deg);
+    transform-origin: left;
 }
 
-.cert-image {
-    width: 100%;
-    aspect-ratio: 1.414 / 1;
-    overflow: hidden;
-    background: var(--border);
-    border-bottom: 1px solid var(--border);
+/* rubber stamp, sits in the empty space beside "FILED WRITE-UPS" */
+.filed { position: relative; }
+
+.stamp {
+    position: absolute;
+    right: 0;
+    top: -14px;
+    padding: 6px 16px 4px;
+    border: 4px double var(--ink-red);
+    color: var(--ink-red);
+    font-size: 1.7rem;
+    letter-spacing: 0.18em;
+    text-align: center;
+    line-height: 1;
+    transform: rotate(-14deg);
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
 }
 
-.cert-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.stamp small {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    margin-top: 4px;
 }
 
-.cert-card-text {
-    padding: 20px;
+/* ---------- Ink ---------- */
+.ch {
+    position: relative;   /* lets each letter sit slightly off the baseline */
 }
 
-.cert-card-text h3 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 1.3rem;
-    color: var(--text);
-    margin-bottom: 4px;
-}
-
-.cert-card-text p {
-    font-size: 0.92rem;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-}
-
-.cert-issuer {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-}
-
+/* ---------- Small screens ---------- */
 @media (max-width: 600px) {
-    .section {
-        padding: 60px 0;
-    }
-
-    .cert-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .cert-card-text h3 {
-        font-size: 1.1rem;
-    }
-}
-
-/* Connect */
-.connect-links {
-    display: flex;
-    gap: 28px;
-    margin-top: 24px;
-}
-
-.connect-links a {
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.95rem;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 2px;
-    transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.connect-links a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-}
-
-/* Footer */
-footer {
-    padding: 40px 0 60px;
-}
-
-.copy {
-    font-size: 0.82rem;
-    color: var(--text-muted);
+    .desk { padding: 28px 10px 50px; }
+    .sheet { padding: 40px 26px 56px; font-size: 14.5px; transform: rotate(-0.4deg); }
+    h1 { font-size: 1.45rem; letter-spacing: 0.22em; }
+    .memo td:first-child { width: 64px; }
+    .stamp { right: -4px; top: -10px; font-size: 1.1rem; padding: 4px 10px 3px; }
+    .sheet::after { width: 90px; height: 90px; right: 16px; }
 }
