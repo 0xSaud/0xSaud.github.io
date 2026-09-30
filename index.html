@@ -27,34 +27,41 @@
             <div class="who">
                 <h1>Saud Alanazi</h1>
                 <p class="role">Security researcher</p>
+                <p class="tags">web · appsec · bug bounty</p>
                 <nav class="links">
-                    <a href="https://twitter.com/reouii" target="_blank" rel="noopener">X (@reouii)</a>
-                    <a href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://twitter.com/reouii" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        @reouii
+                    </a>
+                    <a href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                        0xSaud
+                    </a>
                 </nav>
             </div>
         </header>
 
         <!-- Stitch divider -->
-        <svg class="stitch" viewBox="0 0 640 14" preserveAspectRatio="none" aria-hidden="true">
-            <line x1="0" y1="7" x2="640" y2="7" stroke="currentColor" stroke-width="1.2" stroke-dasharray="9 7"/>
-            <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-                <path d="M76 2 L84 12 M84 2 L76 12"/>
-                <path d="M236 2 L244 12 M244 2 L236 12"/>
-                <path d="M396 2 L404 12 M404 2 L396 12"/>
-                <path d="M556 2 L564 12 M564 2 L556 12"/>
+        <svg class="stitch" viewBox="0 0 640 16" preserveAspectRatio="none" aria-hidden="true">
+            <line class="thread" x1="0" y1="8" x2="640" y2="8" stroke="currentColor" stroke-width="1.2"/>
+            <g class="ties" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M76 3 L84 13 M84 3 L76 13"/>
+                <path d="M236 3 L244 13 M244 3 L236 13"/>
+                <path d="M396 3 L404 13 M404 3 L396 13"/>
+                <path d="M556 3 L564 13 M564 3 L556 13"/>
             </g>
         </svg>
 
         <!-- Research -->
         <section>
             <div class="sec-head">
-                <h2>Research</h2>
+                <h2><small>01</small>Research</h2>
                 <p>Write-ups from vulnerabilities I found and reported.</p>
             </div>
 
             <div class="posts">
 
-                <div class="post">
+                <div class="post placeholder">
                     <div class="post-body">
                         <h3>Coming soon</h3>
                         <p>The first write-up is on its way. New research lands here as soon as it's ready.</p>
@@ -62,14 +69,14 @@
                 </div>
 
                 <!--
-                  Add one <a class="post"> per write-up, newest first.
-                  The banner image block is optional — delete it if you
-                  don't want a picture on a card.
+                  Add one <a class="post"> per write-up, newest first, and
+                  delete the placeholder above. The banner image block is
+                  optional — remove it if you don't want a picture on a card.
 
                   <a class="post" href="research/example.html">
                       <div class="post-img"><img src="img/example.jpg" alt=""></div>
                       <div class="post-body">
-                          <h3>Write-up title</h3>
+                          <h3>Write-up title <span class="arrow">&rarr;</span></h3>
                           <p>One or two lines summarising the finding.</p>
                           <div class="meta">
                               <span>June 2026</span><span class="sep">|</span><span>8 min read</span>
@@ -81,7 +88,10 @@
             </div>
         </section>
 
-        <footer>&copy; 2026 Saud Alanazi</footer>
+        <footer>
+            <span>&copy; 2026 Saud Alanazi</span>
+            <span>Riyadh</span>
+        </footer>
 
     </div>
 
