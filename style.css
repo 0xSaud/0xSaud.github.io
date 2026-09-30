@@ -1,22 +1,20 @@
 /* =========================================================
    Saud Alanazi — Research
-   Dark ink · purple accent · subtle Japanese touches
+   Dark · purple accent · stitch motif
    Change the accent color here ↓ (one line)
    ========================================================= */
 
 :root {
     --accent: #a970ff;
-    --accent-dim: rgba(169, 112, 255, 0.18);
+    --accent-dim: rgba(169, 112, 255, 0.16);
     --bg: #0b0b0d;
     --card: #121215;
     --border: #2a2a2f;
     --text: #e6e3dc;
     --muted: #8f8c85;
-    --kanji: rgba(169, 112, 255, 0.07);
 
     --font-head: 'Cormorant Garamond', 'Times New Roman', serif;
     --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
-    --font-jp: 'Noto Serif JP', serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,50 +37,35 @@ body {
 
 /* ---------- Profile card ---------- */
 .profile {
-    position: relative;
-    overflow: hidden;
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 24px;
+    gap: 26px;
     align-items: center;
     padding: 30px 28px;
     border: 1px solid var(--border);
     background: var(--card);
-    background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
-    background-size: 8px 8px;
 }
 
-.profile .kanji {
-    position: absolute;
-    right: 18px;
-    top: -18px;
-    font-family: var(--font-jp);
-    font-size: 9.5rem;
-    line-height: 1;
-    color: var(--kanji);
-    pointer-events: none;
-    user-select: none;
-}
-
+/* stitched ring around the avatar */
 .avatar {
     width: 96px;
     height: 96px;
     border-radius: 50%;
-    border: 2px solid var(--accent);
-    box-shadow: 0 0 0 6px var(--accent-dim);
-    overflow: hidden;
+    border: 2px dashed var(--accent);
+    box-shadow: 0 0 0 5px var(--accent-dim);
+    padding: 4px;
     background: #0a0a0a;
-    position: relative;
 }
 
 .avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 50%;
     display: block;
 }
 
-.who { position: relative; min-width: 0; }
+.who { min-width: 0; }
 
 .who h1 {
     font-family: var(--font-head);
@@ -90,7 +73,6 @@ body {
     font-size: 2.3rem;
     line-height: 1;
     letter-spacing: 0.01em;
-    color: var(--text);
 }
 
 .who .role {
@@ -111,59 +93,24 @@ body {
     text-decoration: none;
     font-size: 0.78rem;
     letter-spacing: 0.02em;
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px dashed transparent;
     transition: border-color 0.2s ease;
 }
 
 .links a:hover { border-color: var(--accent); }
 
-/* name seal (Kenjaku · 羂索) */
-.seal {
-    position: absolute;
-    right: 14px;
-    bottom: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    padding: 5px 5px 4px;
-    border: 1.5px solid var(--accent);
-    color: var(--accent);
-    font-family: var(--font-jp);
-    font-size: 0.72rem;
-    line-height: 1;
-    transform: rotate(-3deg);
-    opacity: 0.9;
-}
-
-/* ---------- Brush divider ---------- */
-.brush {
+/* ---------- Stitch divider ---------- */
+.stitch {
     display: block;
     width: 100%;
     height: 14px;
     margin: 30px 0 34px;
     color: var(--accent);
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 /* ---------- Section head ---------- */
-.sec-head {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    margin-bottom: 18px;
-}
-
-.sec-head .vlabel {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-family: var(--font-jp);
-    font-size: 0.72rem;
-    color: var(--muted);
-    line-height: 1;
-    padding-top: 5px;
-}
+.sec-head { margin-bottom: 18px; }
 
 .sec-head h2 {
     font-family: var(--font-head);
@@ -214,7 +161,6 @@ a.post:hover { border-color: var(--accent); transform: translateY(-2px); }
     font-size: 1.45rem;
     line-height: 1.2;
     margin-bottom: 8px;
-    color: var(--text);
 }
 
 a.post:hover h3 { color: var(--accent); }
@@ -247,11 +193,9 @@ footer {
 /* ---------- Responsive ---------- */
 @media (max-width: 520px) {
     .wrap { padding: 40px 14px 70px; }
-    .profile { grid-template-columns: 1fr; gap: 18px; padding: 26px 20px 30px; }
+    .profile { grid-template-columns: 1fr; gap: 18px; padding: 26px 20px 28px; }
     .avatar { width: 84px; height: 84px; }
     .who h1 { font-size: 2rem; }
-    .profile .kanji { font-size: 7.5rem; right: 6px; top: -10px; }
-    .seal { right: 12px; bottom: 12px; }
     .post-img { height: 110px; }
     .post h3 { font-size: 1.3rem; }
 }
