@@ -7,7 +7,7 @@
     <meta name="description" content="Saud Alanazi — security researcher. Research and write-ups on web application security.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script>
         (function () {
@@ -22,7 +22,7 @@
     <div class="wrap">
 
         <header class="top">
-            <a href="#" class="name">Saud Alanazi</a>
+            <span class="tag">Security Research</span>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                 <i class="icon-moon">&#9789;</i>
                 <i class="icon-sun">&#9728;</i>
@@ -31,16 +31,24 @@
 
         <!-- Hero -->
         <section class="hero">
-            <h1>Saud Alanazi</h1>
-            <p class="role">Security Researcher</p>
-            <p>I research web application security — business-logic flaws, injection points, and broken access control — and write up what I find.</p>
+            <h1>
+                <span class="l1">Saud</span>
+                <span class="l2">Alanazi</span>
+            </h1>
+            <div class="hero-meta">
+                <p class="role">Security Researcher</p>
+                <p class="intro">I research web application security — business-logic flaws, injection points, and broken access control — and write up what I find.</p>
+            </div>
         </section>
 
-        <!-- Research -->
-        <section class="section">
-            <p class="label">Research &amp; Write-ups</p>
+        <!-- 01 — Research -->
+        <section class="section" id="research">
+            <div class="sec-head">
+                <span class="num grad-text">01</span>
+                <h2>Research &amp; Write-ups</h2>
+            </div>
 
-            <p class="empty">Nothing published yet — write-ups and research will be posted here as soon as they're ready.</p>
+            <p class="empty">Nothing published yet — write-ups and research land here as soon as they're ready.</p>
 
             <!--
               When ready, replace the .empty paragraph above with this list,
@@ -49,6 +57,7 @@
               <ul class="posts">
                   <li>
                       <a href="research/example.html">
+                          <span class="idx">01</span>
                           <span class="t">Write-up title</span>
                           <span class="d">Jan 2026</span>
                       </a>
@@ -57,16 +66,29 @@
             -->
         </section>
 
-        <!-- Contact -->
-        <section class="section">
-            <p class="label">Contact</p>
-            <div class="links">
-                <a href="https://twitter.com/reouii" target="_blank" rel="noopener">X / Twitter</a>
-                <a href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener">LinkedIn</a>
+        <!-- 02 — Contact -->
+        <section class="section" id="contact">
+            <div class="sec-head">
+                <span class="num grad-text">02</span>
+                <h2>Contact</h2>
+            </div>
+
+            <div class="contact-grid">
+                <a href="https://twitter.com/reouii" target="_blank" rel="noopener">
+                    <span class="k">X / Twitter</span>
+                    <span class="v">@reouii</span>
+                </a>
+                <a href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener">
+                    <span class="k">LinkedIn</span>
+                    <span class="v">0xSaud</span>
+                </a>
             </div>
         </section>
 
-        <footer>&copy; 2026 Saud Alanazi</footer>
+        <footer>
+            <span>&copy; 2026 Saud Alanazi</span>
+            <span>Riyadh</span>
+        </footer>
 
     </div>
 
