@@ -3,92 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saud Alanazi — Receipt</title>
+    <title>Saud Alanazi</title>
     <meta name="description" content="Saud Alanazi — security researcher. Write-ups from vulnerabilities I found and reported.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="receipt.css">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Homemade+Apple&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="scene">
+    <div class="desk">
+        <article class="sheet" id="sheet">
 
-        <!-- the printer the receipt comes out of -->
-        <div class="printer" aria-hidden="true">
-            <span class="led"></span>
-            <span class="brand">THERMO-80</span>
-            <div class="slot"></div>
-        </div>
+            <p class="dateline">Riyadh, <span id="today">30 September 2026</span></p>
 
-        <div class="feed">
-            <article class="receipt" id="receipt">
+            <h1>MEMORANDUM</h1>
 
-                <header class="center">
-                    <p class="logo">SAUD<br>ALANAZI</p>
-                    <p>SECURITY RESEARCH &middot; EST. 2026</p>
-                    <p>RIYADH, SAUDI ARABIA</p>
-                </header>
+            <table class="memo">
+                <tr><td>TO:</td><td>Whoever finds this page</td></tr>
+                <tr><td>FROM:</td><td>Saud Alanazi, security researcher</td></tr>
+                <tr><td>RE:</td><td>Research &amp; write-ups</td></tr>
+            </table>
 
-                <hr class="dash">
+            <hr>
 
-                <div class="row"><span>ORDER</span><span>#0x5A0D</span></div>
-                <div class="row"><span>DATE</span><span id="date">--/--/---- --:--</span></div>
-                <div class="row"><span>SERVER</span><span>SAUD</span></div>
-                <div class="row"><span>TABLE</span><span>WEB</span></div>
+            <p>I break web applications for a living. Mostly <span class="red">business-logic flaws</span>, broken access control and injection points &mdash; the bugs scanners walk right past.</p>
 
-                <hr class="dash">
-                <p class="sec">ON THE MENU</p>
+            <p>When I find one, I report it through responsible disclosure. Then I write it up and file it below.</p>
 
-                <div class="item"><span>1x Business-logic flaws</span><span>HIGH</span></div>
-                <div class="item"><span>1x Broken access control</span><span>HIGH</span></div>
-                <div class="item"><span>1x Injection points</span><span>CRIT</span></div>
-                <div class="item"><span>1x Things scanners miss</span><span>FREE</span></div>
+            <div class="filed">
+                <h2>FILED WRITE-UPS</h2>
 
-                <hr class="dash">
-                <p class="sec">RESEARCH SERVED</p>
+            <div class="stamp" id="stamp" aria-hidden="true">PENDING<small>no. 01</small></div>
 
-                <div class="empty">
-                    <p>** KITCHEN IS STILL COOKING **</p>
-                    <p>first write-up coming soon</p>
-                </div>
+            <ol class="files">
+                <li class="none">No. 01 &mdash; <s>still classified</s> coming soon.</li>
 
                 <!--
-                  When a write-up is ready, delete the .empty block above and
-                  add one of these per write-up (newest first):
+                  Add one <li> per write-up, newest first, and delete the
+                  "No. 01" placeholder above:
 
-                  <a class="item link" href="research/example.html">
-                      <span>01 Write-up title</span><span>CVE-2026-XXXX</span>
-                  </a>
-                  <p class="note">JUN 2026 &middot; 8 MIN READ</p>
+                  <li><a href="research/example.html">Write-up title</a> <span class="when">(Jun 2026)</span></li>
                 -->
+            </ol>
+            </div>
 
-                <hr class="dash">
+            <h2>WHERE TO REACH ME</h2>
 
-                <div class="row"><span>SUBTOTAL</span><span>0 WRITE-UPS</span></div>
-                <div class="row"><span>BOUNTY TAX</span><span>0.00</span></div>
-                <div class="row total"><span>TOTAL</span><span>COMING SOON</span></div>
-                <div class="row"><span>PAID VIA</span><span>RESPONSIBLE DISCLOSURE</span></div>
+            <p class="contact">X ........... <a href="https://twitter.com/reouii" target="_blank" rel="noopener">@reouii</a><br>LinkedIn .... <a href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener">0xSaud</a></p>
 
-                <hr class="dash">
-                <p class="sec">FIND ME</p>
-
-                <a class="item link" href="https://twitter.com/reouii" target="_blank" rel="noopener"><span>X / TWITTER</span><span>@reouii &#8599;</span></a>
-                <a class="item link" href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener"><span>LINKEDIN</span><span>0xSaud &#8599;</span></a>
-
-                <hr class="dash">
-
-                <svg class="barcode" id="barcode" aria-hidden="true"></svg>
-                <p class="center small">*0XSAUD*</p>
-
-                <p class="center thanks">THANK YOU FOR YOUR VISIT<br>PLEASE COME AGAIN</p>
-                <p class="center small">KEEP THIS RECEIPT FOR YOUR RECORDS</p>
-
-            </article>
-        </div>
+            <p class="closing">Regards,<span class="sig">S. Alanazi</span></p>
+        </article>
 
     </div>
 
-    <script src="receipt.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
