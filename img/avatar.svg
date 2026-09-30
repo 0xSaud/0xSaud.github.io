@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <!-- Placeholder avatar — replace by adding img/avatar.jpg -->
-  <rect width="200" height="200" fill="#0a0a0a"/>
-  <circle cx="100" cy="100" r="62" fill="none" stroke="#3a3a3a" stroke-width="2"/>
-  <circle cx="100" cy="100" r="44" fill="none" stroke="#2a2a2a" stroke-width="1" stroke-dasharray="3 5"/>
-  <text x="100" y="116" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="44" font-weight="700" fill="#5a5a5a">S</text>
-</svg>
