@@ -3,97 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saud Alanazi</title>
+    <title>Saud Alanazi — Receipt</title>
     <meta name="description" content="Saud Alanazi — security researcher. Write-ups from vulnerabilities I found and reported.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="receipt.css">
 </head>
 <body>
 
-    <!-- ============ The seam: scroll to cut the stitches ============ -->
-    <div class="open" id="open">
-        <div class="stage">
+    <div class="scene">
 
-            <!-- what's underneath -->
-            <div class="inside" id="inside">
-                <p class="label">security researcher</p>
-                <p class="line">I read what's <em>underneath</em>.</p>
-                <p class="tags">web · appsec · bug bounty</p>
-                <nav class="links">
-                    <a href="https://twitter.com/reouii" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        @reouii
-                    </a>
-                    <a href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-                        0xSaud
-                    </a>
-                </nav>
-            </div>
-
-            <!-- the two halves, stitched shut -->
-            <div class="half top" id="top">
-                <div class="face"><h1 class="name">Saud Alanazi</h1></div>
-            </div>
-            <div class="half bottom" id="bottom">
-                <div class="face" aria-hidden="true"><span class="name">Saud Alanazi</span></div>
-            </div>
-
-            <svg class="seam" id="seam" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
-                <line class="thread" x1="0" y1="20" x2="1000" y2="20"/>
-                <g class="ties" id="ties"></g>
-            </svg>
-
-            <p class="hint" id="hint">scroll to cut the thread</p>
+        <!-- the printer the receipt comes out of -->
+        <div class="printer" aria-hidden="true">
+            <span class="led"></span>
+            <span class="brand">THERMO-80</span>
+            <div class="slot"></div>
         </div>
+
+        <div class="feed">
+            <article class="receipt" id="receipt">
+
+                <header class="center">
+                    <p class="logo">SAUD<br>ALANAZI</p>
+                    <p>SECURITY RESEARCH &middot; EST. 2026</p>
+                    <p>RIYADH, SAUDI ARABIA</p>
+                </header>
+
+                <hr class="dash">
+
+                <div class="row"><span>ORDER</span><span>#0x5A0D</span></div>
+                <div class="row"><span>DATE</span><span id="date">--/--/---- --:--</span></div>
+                <div class="row"><span>SERVER</span><span>SAUD</span></div>
+                <div class="row"><span>TABLE</span><span>WEB</span></div>
+
+                <hr class="dash">
+                <p class="sec">ON THE MENU</p>
+
+                <div class="item"><span>1x Business-logic flaws</span><span>HIGH</span></div>
+                <div class="item"><span>1x Broken access control</span><span>HIGH</span></div>
+                <div class="item"><span>1x Injection points</span><span>CRIT</span></div>
+                <div class="item"><span>1x Things scanners miss</span><span>FREE</span></div>
+
+                <hr class="dash">
+                <p class="sec">RESEARCH SERVED</p>
+
+                <div class="empty">
+                    <p>** KITCHEN IS STILL COOKING **</p>
+                    <p>first write-up coming soon</p>
+                </div>
+
+                <!--
+                  When a write-up is ready, delete the .empty block above and
+                  add one of these per write-up (newest first):
+
+                  <a class="item link" href="research/example.html">
+                      <span>01 Write-up title</span><span>CVE-2026-XXXX</span>
+                  </a>
+                  <p class="note">JUN 2026 &middot; 8 MIN READ</p>
+                -->
+
+                <hr class="dash">
+
+                <div class="row"><span>SUBTOTAL</span><span>0 WRITE-UPS</span></div>
+                <div class="row"><span>BOUNTY TAX</span><span>0.00</span></div>
+                <div class="row total"><span>TOTAL</span><span>COMING SOON</span></div>
+                <div class="row"><span>PAID VIA</span><span>RESPONSIBLE DISCLOSURE</span></div>
+
+                <hr class="dash">
+                <p class="sec">FIND ME</p>
+
+                <a class="item link" href="https://twitter.com/reouii" target="_blank" rel="noopener"><span>X / TWITTER</span><span>@reouii &#8599;</span></a>
+                <a class="item link" href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener"><span>LINKEDIN</span><span>0xSaud &#8599;</span></a>
+
+                <hr class="dash">
+
+                <svg class="barcode" id="barcode" aria-hidden="true"></svg>
+                <p class="center small">*0XSAUD*</p>
+
+                <p class="center thanks">THANK YOU FOR YOUR VISIT<br>PLEASE COME AGAIN</p>
+                <p class="center small">KEEP THIS RECEIPT FOR YOUR RECORDS</p>
+
+            </article>
+        </div>
+
     </div>
 
-    <!-- ============ Research ============ -->
-    <main class="wrap">
-
-        <header class="sec-head">
-            <p class="kicker">// vessels</p>
-            <h2>Research</h2>
-            <p class="sub">Write-ups from vulnerabilities I found and reported.<br>Each one lives in its own vessel.</p>
-        </header>
-
-        <ol class="vessels">
-
-            <li class="vessel empty">
-                <span class="no">vessel 01</span>
-                <div class="body">
-                    <h3>Unoccupied</h3>
-                    <p>The first write-up is still looking for a body. It moves in soon.</p>
-                </div>
-                <span class="state">— waiting</span>
-            </li>
-
-            <!--
-              Add one <li class="vessel"> per write-up, newest first, and
-              delete the "Unoccupied" one above:
-
-              <li class="vessel">
-                  <a href="research/example.html">
-                      <span class="no">vessel 01</span>
-                      <div class="body">
-                          <h3>Write-up title</h3>
-                          <p>One or two lines summarising the finding.</p>
-                      </div>
-                      <span class="state">Jun 2026</span>
-                  </a>
-              </li>
-            -->
-
-        </ol>
-
-        <footer>
-            <span>&copy; 2026 Saud Alanazi</span>
-            <span>Riyadh</span>
-        </footer>
-    </main>
-
-    <script src="script.js"></script>
+    <script src="receipt.js"></script>
 </body>
 </html>

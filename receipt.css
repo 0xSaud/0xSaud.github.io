@@ -1,0 +1,244 @@
+/* =========================================================
+   Saud Alanazi — "Receipt"
+   A thermal receipt printing out of a little printer.
+   ========================================================= */
+
+:root {
+    --counter: #1c1b19;
+    --paper: #fbfaf5;
+    --paper-shade: #eeece4;
+    --ink: #262626;
+    --ink-soft: #5c5b57;
+    --printer: #111;
+    --printer-edge: #2a2a2a;
+    --led: #3ddc84;
+    --w: 340px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(700px 500px at 50% 0%, rgba(255, 240, 210, 0.10), transparent 70%),
+        var(--counter);
+    font-family: 'Space Mono', 'Courier New', monospace;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+}
+
+.scene {
+    width: min(var(--w), calc(100% - 32px));
+    margin: 0 auto;
+    padding: 48px 0 80px;
+}
+
+/* ---------- Printer ---------- */
+.printer {
+    position: relative;
+    height: 64px;
+    margin: 0 -22px;
+    border-radius: 12px 12px 6px 6px;
+    background: linear-gradient(180deg, #2b2b2b, var(--printer));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 14px 30px -12px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+}
+
+.printer .led {
+    position: absolute;
+    left: 18px;
+    top: 16px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--led);
+    box-shadow: 0 0 8px var(--led);
+    animation: blink 0.35s steps(2) 9;
+}
+
+.printer .brand {
+    position: absolute;
+    right: 18px;
+    top: 11px;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: #6d6d6d;
+}
+
+.printer .slot {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 12px;
+    height: 8px;
+    border-radius: 4px;
+    background: #050505;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.9);
+}
+
+@keyframes blink { to { opacity: 0.25; } }
+
+/* ---------- Receipt ---------- */
+.feed {
+    position: relative;
+    margin-top: -14px;          /* tucks under the slot */
+    overflow: hidden;
+    padding-bottom: 24px;       /* room for the torn edge + shadow */
+}
+
+.receipt {
+    position: relative;
+    padding: 30px 22px 30px;
+    background:
+        linear-gradient(90deg, var(--paper-shade), var(--paper) 8%, var(--paper) 92%, var(--paper-shade));
+    font-size: 12.5px;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+    text-shadow: 0 0 0.6px rgba(0, 0, 0, 0.35);   /* thermal ink bleed */
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+    animation: print 2.8s steps(28) 0.25s both;
+}
+
+/* torn bottom edge */
+.receipt::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    height: 10px;
+    background:
+        linear-gradient(135deg, var(--paper) 50%, transparent 50%) 0 0 / 12px 10px repeat-x,
+        linear-gradient(-135deg, var(--paper) 50%, transparent 50%) 0 0 / 12px 10px repeat-x;
+}
+
+@keyframes print {
+    from { transform: translateY(-100%); }
+    to   { transform: translateY(0); }
+}
+
+.center { text-align: center; }
+
+.logo {
+    font-weight: 700;
+    font-size: 2.3rem;
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+}
+
+header p { font-size: 11px; }
+
+.dash {
+    border: none;
+    height: 1px;
+    margin: 14px 0;
+    background: repeating-linear-gradient(90deg, var(--ink) 0 6px, transparent 6px 10px);
+    opacity: 0.8;
+}
+
+.row,
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.row span:last-child,
+.item span:last-child {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.item span:first-child { min-width: 0; }
+
+.sec {
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+.sec::before,
+.sec::after { content: " \2014 "; font-weight: 400; }
+
+.total {
+    font-weight: 700;
+    font-size: 15px;
+    margin: 4px 0;
+}
+
+.empty {
+    text-align: center;
+    padding: 8px 0 2px;
+    color: var(--ink-soft);
+}
+
+.empty p:first-child {
+    color: var(--ink);
+    font-weight: 700;
+    animation: flicker 3.2s ease-in-out infinite;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+}
+
+.note {
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    margin: -2px 0 8px;
+    padding-left: 22px;
+}
+
+/* clickable lines: highlight like an inverted thermal print */
+a.link {
+    color: inherit;
+    text-decoration: none;
+    padding: 2px 4px;
+    margin: 0 -4px 2px;
+    transition: background 0.12s ease, color 0.12s ease;
+}
+
+a.link:hover,
+a.link:focus-visible {
+    background: var(--ink);
+    color: var(--paper);
+    text-shadow: none;
+    outline: none;
+}
+
+.barcode {
+    display: block;
+    width: 100%;
+    height: 52px;
+    margin: 6px 0 2px;
+}
+
+.small {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+}
+
+.thanks {
+    margin: 16px 0 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+/* ---------- Small screens / reduced motion ---------- */
+@media (max-width: 400px) {
+    .printer { margin: 0 -10px; }
+    .receipt { padding: 26px 16px; font-size: 11.5px; }
+    .logo { font-size: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .receipt, .printer .led, .empty p:first-child { animation: none; }
+}

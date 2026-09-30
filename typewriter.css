@@ -1,0 +1,215 @@
+/* =========================================================
+   Saud Alanazi — "Memo"
+   A memo typed out on an old typewriter.
+   ========================================================= */
+
+:root {
+    --desk: #2b2620;
+    --paper: #f3ecda;
+    --paper-edge: #e3d9c1;
+    --ink: #1f1d1a;
+    --ink-red: #a8251c;
+    --muted: #6d6556;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(900px 600px at 50% 10%, rgba(255, 220, 160, 0.10), transparent 70%),
+        repeating-linear-gradient(92deg, rgba(0,0,0,0.05) 0 2px, transparent 2px 9px),
+        var(--desk);
+    font-family: 'Special Elite', 'Courier New', monospace;
+    color: var(--ink);
+}
+
+.desk {
+    padding: 56px 16px 70px;
+}
+
+/* ---------- The sheet ---------- */
+.sheet {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 64px 68px 80px;
+    background:
+        radial-gradient(ellipse at 50% 40%, var(--paper) 55%, var(--paper-edge) 100%);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.4) inset,
+        0 30px 60px -20px rgba(0, 0, 0, 0.7),
+        0 6px 14px rgba(0, 0, 0, 0.35);
+    transform: rotate(-0.6deg);
+    font-size: 16px;
+    line-height: 1.75;
+    cursor: text;
+}
+
+/* paper grain */
+.sheet::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* a faint coffee ring, because of course */
+.sheet::after {
+    content: "";
+    position: absolute;
+    right: 38px;
+    bottom: 120px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 7px solid rgba(120, 80, 30, 0.08);
+    box-shadow: inset 0 0 0 2px rgba(120, 80, 30, 0.05);
+    transform: rotate(18deg) scaleX(1.06);
+    pointer-events: none;
+}
+
+.dateline { text-align: right; margin-bottom: 30px; }
+
+h1 {
+    font-weight: 400;
+    font-size: 1.9rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 18px;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    margin: 34px 0 10px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.memo { border-collapse: collapse; margin-bottom: 18px; }
+.memo td { padding: 0 0 2px; vertical-align: top; }
+.memo td:first-child { width: 84px; }
+
+hr {
+    border: none;
+    border-top: 1.5px dashed var(--ink);
+    opacity: 0.55;
+    margin: 6px 0 24px;
+}
+
+p + p { margin-top: 16px; }
+
+.red { color: var(--ink-red); }
+
+s { text-decoration-thickness: 2px; text-decoration-color: var(--ink); }
+
+.files { padding-left: 26px; }
+.files li { padding-left: 4px; }
+.files li.none { list-style: none; margin-left: -26px; }
+.files .when { color: var(--muted); }
+
+a {
+    color: var(--ink-red);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+}
+
+a:hover { background: rgba(168, 37, 28, 0.1); }
+
+.closing { margin-top: 38px; }
+
+/* handwritten signature, revealed after typing */
+.sheet .sig {
+    display: block;
+    font-family: 'Homemade Apple', cursive;
+    font-size: 1.6rem;
+    color: #1d2e5c;
+    margin-top: 6px;
+    transform: rotate(-4deg);
+    transform-origin: left;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1.2s ease-out;
+}
+
+.sheet.done .sig { clip-path: inset(0 0 0 0); }
+
+/* rubber stamp, sits in the empty space beside "FILED WRITE-UPS" */
+.filed { position: relative; }
+
+.stamp {
+    position: absolute;
+    right: 0;
+    top: -14px;
+    padding: 6px 16px 4px;
+    border: 4px double var(--ink-red);
+    color: var(--ink-red);
+    font-size: 1.7rem;
+    letter-spacing: 0.18em;
+    text-align: center;
+    line-height: 1;
+    transform: rotate(-14deg) scale(1.8);
+    opacity: 0;
+    mix-blend-mode: multiply;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.stamp small {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    margin-top: 4px;
+}
+
+.sheet.done .stamp {
+    animation: thunk 0.35s cubic-bezier(.2, .9, .3, 1.2) 1.1s forwards;
+}
+
+@keyframes thunk {
+    0%   { opacity: 0; transform: rotate(-14deg) scale(1.8); }
+    100% { opacity: 0.85; transform: rotate(-14deg) scale(1); }
+}
+
+/* ---------- Typing ---------- */
+.ch {
+    position: relative;   /* lets each letter sit slightly off the baseline */
+}
+
+.caret {
+    display: inline-block;
+    width: 0.55em;
+    height: 1.05em;
+    margin-left: 1px;
+    vertical-align: -0.15em;
+    background: var(--ink);
+    opacity: 0.75;
+    animation: caret 0.9s steps(2) infinite;
+}
+
+@keyframes caret { to { opacity: 0; } }
+
+.skip {
+    text-align: center;
+    margin-top: 26px;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: rgba(243, 236, 218, 0.45);
+    transition: opacity 0.4s ease;
+}
+
+.skip.gone { opacity: 0; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 600px) {
+    .desk { padding: 28px 10px 50px; }
+    .sheet { padding: 40px 26px 56px; font-size: 14.5px; transform: rotate(-0.4deg); }
+    h1 { font-size: 1.45rem; letter-spacing: 0.22em; }
+    .memo td:first-child { width: 64px; }
+    .stamp { right: -4px; top: -10px; font-size: 1.1rem; padding: 4px 10px 3px; }
+    .sheet::after { width: 90px; height: 90px; right: 16px; }
+}
