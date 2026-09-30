@@ -7,53 +7,83 @@
     <meta name="description" content="Saud Alanazi — security researcher. Write-ups from vulnerabilities I found and reported.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500&text=%E5%91%AA%E7%BE%82%E7%B4%A2%E7%A0%94%E7%A9%B6&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="wrap">
 
+        <!-- Profile -->
         <header class="profile">
+            <span class="kanji" aria-hidden="true">呪</span>
+
             <!--
-              Avatar: drop your own image at img/avatar.jpg and it will be used
-              automatically. Until then the placeholder img/avatar.svg is shown.
+              Avatar: add your own image at img/avatar.jpg and it is used
+              automatically. Until then the placeholder img/avatar.svg shows.
             -->
             <div class="avatar">
                 <img src="img/avatar.jpg" alt="Saud Alanazi" onerror="this.onerror=null;this.src='img/avatar.svg'">
             </div>
 
-            <h1>Saud</h1>
-            <p class="role">Web security researcher</p>
+            <div class="who">
+                <h1>Saud Alanazi</h1>
+                <p class="role">Security researcher</p>
+                <nav class="links">
+                    <a href="https://twitter.com/reouii" target="_blank" rel="noopener">X (@reouii)</a>
+                    <a href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener">LinkedIn</a>
+                </nav>
+            </div>
 
-            <nav class="links">
-                <a href="https://twitter.com/reouii" target="_blank" rel="noopener">X (@reouii)</a>
-                <a href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener">LinkedIn</a>
-            </nav>
+            <span class="seal" aria-hidden="true"><span>羂</span><span>索</span></span>
         </header>
 
-        <hr>
+        <!-- Brush divider -->
+        <svg class="brush" viewBox="0 0 640 14" preserveAspectRatio="none" aria-hidden="true">
+            <path fill="currentColor" d="M0 8 C 40 3, 90 10, 160 7 C 250 3, 330 11, 420 7 C 500 4, 570 9, 640 5 L 640 8 C 570 12, 500 7, 420 10 C 330 14, 250 6, 160 10 C 90 13, 40 6, 0 10 Z"/>
+        </svg>
 
-        <section class="posts">
+        <!-- Research -->
+        <section>
+            <div class="sec-head">
+                <span class="vlabel" aria-hidden="true"><span>研</span><span>究</span></span>
+                <div>
+                    <h2>Research</h2>
+                    <p>Write-ups from vulnerabilities I found and reported.</p>
+                </div>
+            </div>
 
-            <article class="post">
-                <h2>Coming soon</h2>
-                <p>Write-ups from vulnerabilities I found and reported will be posted here.</p>
-            </article>
+            <div class="posts">
 
-            <!--
-              Add one <article> per write-up, newest first. Example:
+                <div class="post">
+                    <div class="post-body">
+                        <h3>Coming soon</h3>
+                        <p>The first write-up is on its way. New research lands here as soon as it's ready.</p>
+                    </div>
+                </div>
 
-              <article class="post">
-                  <a href="research/xs-leaks-part-1.html">
-                      <h2>The Art of XS-Leak Attacks - Part 1</h2>
-                      <p>A deep dive into XS-Leak attacks and how they work internally in Chromium.</p>
-                      <span class="date">June 2026</span>
+                <!--
+                  Add one <a class="post"> per write-up, newest first.
+                  The banner image block is optional — delete it if you
+                  don't want a picture on a card.
+
+                  <a class="post" href="research/example.html">
+                      <div class="post-img"><img src="img/example.jpg" alt=""></div>
+                      <div class="post-body">
+                          <h3>Write-up title</h3>
+                          <p>One or two lines summarising the finding.</p>
+                          <div class="meta">
+                              <span>June 2026</span><span class="sep">|</span><span>8 min read</span>
+                          </div>
+                      </div>
                   </a>
-              </article>
-            -->
+                -->
 
+            </div>
         </section>
+
+        <footer>&copy; 2026 Saud Alanazi</footer>
 
     </div>
 

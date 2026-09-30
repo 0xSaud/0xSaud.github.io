@@ -1,50 +1,78 @@
 /* =========================================================
    Saud Alanazi — Research
-   Black · monospace · single accent color
-   Change the accent here ↓ (one line)
+   Dark ink · purple accent · subtle Japanese touches
+   Change the accent color here ↓ (one line)
    ========================================================= */
 
 :root {
-    --accent: #a970ff;      /* purple */
-    --bg: #000000;
-    --text: #d4d4d4;
-    --muted: #a3a3a3;
-    --rule: #2e2e2e;
-    --font: 'Roboto Mono', 'JetBrains Mono', 'Courier New', monospace;
+    --accent: #a970ff;
+    --accent-dim: rgba(169, 112, 255, 0.18);
+    --bg: #0b0b0d;
+    --card: #121215;
+    --border: #2a2a2f;
+    --text: #e6e3dc;
+    --muted: #8f8c85;
+    --kanji: rgba(169, 112, 255, 0.07);
+
+    --font-head: 'Cormorant Garamond', 'Times New Roman', serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+    --font-jp: 'Noto Serif JP', serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: var(--font);
-    font-size: 17px;
-    line-height: 1.5;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
 
 .wrap {
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto;
-    padding: 20px 20px 80px;
+    padding: 64px 20px 90px;
 }
 
-/* ---------- Profile ---------- */
+/* ---------- Profile card ---------- */
 .profile {
-    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 30px 28px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+
+.profile .kanji {
+    position: absolute;
+    right: 18px;
+    top: -18px;
+    font-family: var(--font-jp);
+    font-size: 9.5rem;
+    line-height: 1;
+    color: var(--kanji);
+    pointer-events: none;
+    user-select: none;
 }
 
 .avatar {
-    width: 84px;
-    height: 84px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     border: 2px solid var(--accent);
+    box-shadow: 0 0 0 6px var(--accent-dim);
     overflow: hidden;
-    margin: 0 auto;
     background: #0a0a0a;
+    position: relative;
 }
 
 .avatar img {
@@ -54,85 +82,176 @@ body {
     display: block;
 }
 
-.profile h1 {
-    margin-top: 26px;
-    font-size: 2.1rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--accent);
-    line-height: 1.1;
+.who { position: relative; min-width: 0; }
+
+.who h1 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 2.3rem;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: var(--text);
 }
 
-.profile .role {
-    margin-top: 18px;
-    font-size: 1rem;
+.who .role {
+    margin-top: 8px;
+    font-size: 0.8rem;
     color: var(--muted);
+    letter-spacing: 0.04em;
 }
 
 .links {
-    margin-top: 28px;
     display: flex;
-    justify-content: center;
-    gap: 42px;
-    flex-wrap: wrap;
+    gap: 22px;
+    margin-top: 18px;
 }
 
 .links a {
     color: var(--accent);
     text-decoration: none;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
 }
 
-.links a:hover { text-decoration: underline; }
+.links a:hover { border-color: var(--accent); }
 
-hr {
-    border: none;
-    border-top: 1px solid var(--rule);
-    margin: 32px 0 48px;
-}
-
-/* ---------- Posts ---------- */
-.posts { display: flex; flex-direction: column; gap: 36px; }
-
-.post {
-    border-left: 1px solid #454545;
-    padding: 14px 0 14px 26px;
-}
-
-.post a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.post h2 {
-    font-size: 1.15rem;
-    font-weight: 400;
+/* name seal (Kenjaku · 羂索) */
+.seal {
+    position: absolute;
+    right: 14px;
+    bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 5px 5px 4px;
+    border: 1.5px solid var(--accent);
     color: var(--accent);
-    margin-bottom: 14px;
-    line-height: 1.35;
+    font-family: var(--font-jp);
+    font-size: 0.72rem;
+    line-height: 1;
+    transform: rotate(-3deg);
+    opacity: 0.9;
 }
 
-.post a:hover h2 { text-decoration: underline; }
-
-.post p {
-    font-size: 1rem;
-    color: var(--text);
-    line-height: 1.5;
-}
-
-.post .date {
+/* ---------- Brush divider ---------- */
+.brush {
     display: block;
-    margin-top: 12px;
+    width: 100%;
+    height: 14px;
+    margin: 30px 0 34px;
+    color: var(--accent);
+    opacity: 0.85;
+}
+
+/* ---------- Section head ---------- */
+.sec-head {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+.sec-head .vlabel {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--font-jp);
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1;
+    padding-top: 5px;
+}
+
+.sec-head h2 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 1.1;
+}
+
+.sec-head p {
     font-size: 0.78rem;
     color: var(--muted);
+    margin-top: 4px;
+}
+
+/* ---------- Write-up cards ---------- */
+.posts { display: flex; flex-direction: column; gap: 14px; }
+
+.post {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--border);
+    background: var(--card);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+a.post:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+.post-img {
+    height: 130px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+    background: #0e0e11;
+}
+
+.post-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.post-body { padding: 18px 20px 16px; }
+
+.post h3 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 1.45rem;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+a.post:hover h3 { color: var(--accent); }
+
+.post p {
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.55;
+}
+
+.meta {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+}
+
+.meta .sep { opacity: 0.45; }
+
+/* ---------- Footer ---------- */
+footer {
+    margin-top: 56px;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 480px) {
-    body { font-size: 15.5px; }
-    .profile h1 { font-size: 1.8rem; }
-    .links { gap: 26px; }
-    .post { padding-left: 18px; }
+@media (max-width: 520px) {
+    .wrap { padding: 40px 14px 70px; }
+    .profile { grid-template-columns: 1fr; gap: 18px; padding: 26px 20px 30px; }
+    .avatar { width: 84px; height: 84px; }
+    .who h1 { font-size: 2rem; }
+    .profile .kanji { font-size: 7.5rem; right: 6px; top: -10px; }
+    .seal { right: 12px; bottom: 12px; }
+    .post-img { height: 110px; }
+    .post h3 { font-size: 1.3rem; }
 }
