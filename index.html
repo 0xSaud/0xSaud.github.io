@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saud Alanazi</title>
+    <title>Saud Alanazi — Security Research</title>
+    <meta name="description" content="Saud Alanazi — security researcher and penetration tester. Research, write-ups, and certifications in offensive security.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script>
         (function () {
-            var stored = localStorage.getItem('theme');
-            var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-            if (stored === 'light' || (!stored && prefersLight)) {
+            // Dark-first theme; only go light if the visitor explicitly chose it.
+            if (localStorage.getItem('theme') === 'light') {
                 document.documentElement.setAttribute('data-theme', 'light');
             }
         })();
@@ -20,81 +20,129 @@
 </head>
 <body>
 
+    <div class="progress" id="progress"></div>
+    <canvas class="bg-canvas" id="bgCanvas" aria-hidden="true"></canvas>
+
     <!-- Navbar -->
     <header class="navbar">
         <div class="navbar-inner">
-            <a href="#top" class="brand">Saud Alanazi</a>
+            <a href="#top" class="brand">
+                <svg class="seal" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                    <circle cx="20" cy="20" r="17"/>
+                    <circle cx="20" cy="20" r="10"/>
+                    <path d="M20 3v34M3 20h34M8 8l24 24M32 8L8 32"/>
+                </svg>
+                Saud Alanazi
+            </a>
             <nav class="nav-links">
                 <a href="#whoami">About</a>
+                <a href="#research">Research</a>
                 <a href="#certs">Certifications</a>
-                <a href="#writeups">Write-ups</a>
                 <a href="#connect">Contact</a>
             </nav>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
                 <i class="icon-moon">&#9789;</i>
                 <i class="icon-sun">&#9728;</i>
             </button>
-            <a href="ar.html" class="lang-switch">AR</a>
         </div>
     </header>
 
     <!-- Hero -->
     <section class="hero" id="top">
+        <!-- Original sorcery-circle motif (decorative) -->
+        <svg class="sigil" viewBox="0 0 260 260" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <circle cx="130" cy="130" r="126"/>
+            <circle cx="130" cy="130" r="112" stroke-dasharray="2 6"/>
+            <g class="ring-2">
+                <circle cx="130" cy="130" r="86"/>
+                <circle cx="130" cy="130" r="60" stroke-dasharray="1 5"/>
+                <path d="M130 30 L207 175 L53 175 Z"/>
+                <path d="M130 230 L53 85 L207 85 Z"/>
+            </g>
+            <circle cx="130" cy="130" r="30"/>
+            <circle cx="130" cy="130" r="4" fill="currentColor" stroke="none"/>
+        </svg>
+
         <div class="hero-content">
-            <p class="kicker">Offensive Security</p>
-            <h1 class="hero-title">Saud Alanazi</h1>
-            <p class="hero-role">Penetration Tester &amp; Red Team Operator</p>
+            <p class="kicker">Security Research</p>
+            <h1 class="hero-title">Saud <span class="accent">Alanazi</span></h1>
+            <p class="hero-role">Security Researcher &amp; Penetration Tester</p>
             <hr class="rule">
-            <p class="hero-desc">I help organizations find and fix security weaknesses before attackers do &mdash; through hands-on penetration testing and red team engagements.</p>
+            <p class="hero-desc">I break systems to understand them — hunting business-logic flaws, injection points, and broken access control, then turning each finding into research others can learn from.</p>
         </div>
     </section>
+
+    <svg class="seam" viewBox="0 0 780 14" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="0" y1="7" x2="780" y2="7" stroke="currentColor" stroke-width="1" stroke-dasharray="10 10"/>
+        <g stroke="currentColor" stroke-width="1.4">
+            <path d="M60 2 L68 12 M68 2 L60 12"/><path d="M220 2 L228 12 M228 2 L220 12"/>
+            <path d="M390 2 L398 12 M398 2 L390 12"/><path d="M560 2 L568 12 M568 2 L560 12"/>
+            <path d="M712 2 L720 12 M720 2 L712 12"/>
+        </g>
+    </svg>
 
     <div class="container">
 
         <!-- 1) About / whoami -->
-        <section class="section" id="whoami">
+        <section class="section reveal" id="whoami">
             <p class="kicker">whoami</p>
-            <p class="about-text">I'm Saud Alanazi, a penetration tester and BugHunter. My work centers on web application security &mdash; hunting for business logic flaws, injection points, and broken access control that automated scanning misses, then reporting them through responsible disclosure.</p>
+            <p class="about-text">I'm <span class="hl">Saud Alanazi</span>, a penetration tester and bug hunter based in Riyadh. My work centers on <span class="hl">web application security</span> — hunting for the business-logic flaws, injection points, and broken access control that automated scanning misses, then reporting them through responsible disclosure and documenting what I learn.</p>
         </section>
 
-        <!-- 2) Certifications -->
-        <section class="section" id="certs">
+        <!-- 2) Research / Write-ups -->
+        <section class="section reveal" id="research">
+            <p class="kicker">Research &amp; Write-ups</p>
+            <div class="empty-state">
+                <span class="tag">Incoming</span>
+                <p>Nothing published yet — deep-dives on vulnerabilities, disclosure write-ups, and technical research will surface here as soon as each one is ready. Consider this the seam before the stitch.</p>
+            </div>
+
+            <!--
+              When ready, replace the empty-state above with the list below and
+              add one <a class="research-row"> per write-up:
+
+              <div class="research-list">
+                  <a href="research/example.html" class="research-row">
+                      <div>
+                          <div class="r-title">Write-up Title</div>
+                          <div class="r-desc">One-line summary of what it covers.</div>
+                      </div>
+                      <span class="r-meta">Jan 2026</span>
+                  </a>
+              </div>
+            -->
+        </section>
+
+        <!-- 3) Certifications -->
+        <section class="section reveal" id="certs">
             <p class="kicker">Certifications</p>
             <div class="cert-grid">
-                <a href="Cert/eWPTXv3.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eWPTXv3_page-0001.jpg" alt="eWPTXv3 Certificate">
-                    </div>
+                <a href="Cert/eWPTXv3.pdf" target="_blank" rel="noopener" class="cert-card">
+                    <div class="cert-image"><img src="Cert/eWPTXv3_page-0001.jpg" alt="eWPTXv3 Certificate" loading="lazy"></div>
                     <div class="cert-card-text">
                         <h3>eWPTXv3</h3>
                         <p>Web Application Penetration Tester eXtreme</p>
                         <span class="cert-issuer">INE Security</span>
                     </div>
                 </a>
-                <a href="Cert/eCPPT.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eCPPT_page-0001.jpg" alt="eCPPT Certificate">
-                    </div>
+                <a href="Cert/eCPPT.pdf" target="_blank" rel="noopener" class="cert-card">
+                    <div class="cert-image"><img src="Cert/eCPPT_page-0001.jpg" alt="eCPPT Certificate" loading="lazy"></div>
                     <div class="cert-card-text">
                         <h3>eCPPTv2</h3>
                         <p>Certified Professional Penetration Tester</p>
                         <span class="cert-issuer">INE Security</span>
                     </div>
                 </a>
-                <a href="Cert/eMAPT.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eMAPT_page-0001.jpg" alt="eMAPT Certificate">
-                    </div>
+                <a href="Cert/eMAPT.pdf" target="_blank" rel="noopener" class="cert-card">
+                    <div class="cert-image"><img src="Cert/eMAPT_page-0001.jpg" alt="eMAPT Certificate" loading="lazy"></div>
                     <div class="cert-card-text">
                         <h3>eMAPT</h3>
                         <p>Mobile Application Penetration Tester</p>
                         <span class="cert-issuer">INE Security</span>
                     </div>
                 </a>
-                <a href="Cert/eJPT.pdf" target="_blank" class="cert-card">
-                    <div class="cert-image">
-                        <img src="Cert/eJPT_page-0001.jpg" alt="eJPT Certificate">
-                    </div>
+                <a href="Cert/eJPT.pdf" target="_blank" rel="noopener" class="cert-card">
+                    <div class="cert-image"><img src="Cert/eJPT_page-0001.jpg" alt="eJPT Certificate" loading="lazy"></div>
                     <div class="cert-card-text">
                         <h3>eJPTv2</h3>
                         <p>Junior Penetration Tester</p>
@@ -104,40 +152,27 @@
             </div>
         </section>
 
-        <!-- 3) Write-ups -->
-        <section class="section" id="writeups">
-            <p class="kicker">Write-ups</p>
-            <p class="about-text">Nothing published yet &mdash; write-ups on vulnerabilities and technical tasks will be posted here as soon as they are ready.</p>
-
-            <!--
-              When ready, add entries here following this pattern:
-
-              <div class="cert-list">
-                  <a href="writeups/example.html" class="cert-row">
-                      <div class="cert-row-text">
-                          <h3>Write-up Title</h3>
-                          <p>One-line summary of what it covers.</p>
-                          <span class="cert-issuer">Jan 2026</span>
-                      </div>
-                  </a>
-              </div>
-            -->
-        </section>
-
         <!-- 4) Connect -->
-        <section class="section connect" id="connect">
+        <section class="section reveal" id="connect">
             <p class="kicker">Connect</p>
-            <p class="about-text">Get in touch for collaborations and inquiries.</p>
+            <p class="about-text">Open to collaborations, research, and security inquiries.</p>
             <div class="connect-links">
-                <a href="https://twitter.com/reouii" target="_blank">X / Twitter</a>
-                <a href="https://linkedin.com/in/0xSaud" target="_blank">LinkedIn</a>
+                <a href="https://twitter.com/reouii" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    X / Twitter
+                </a>
+                <a href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                    LinkedIn
+                </a>
             </div>
         </section>
 
         <footer>
-            <p class="copy">&copy; 2026 Saud Alanazi</p>
+            <p class="copy"><span class="dot"></span> &copy; 2026 Saud Alanazi &middot; Riyadh</p>
         </footer>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
