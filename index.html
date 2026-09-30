@@ -1,97 +1,61 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saud Alanazi — Research</title>
-    <meta name="description" content="Saud Alanazi — security researcher. Research and write-ups on web application security.">
+    <title>Saud Alanazi</title>
+    <meta name="description" content="Saud Alanazi — security researcher. Write-ups from vulnerabilities I found and reported.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script>
-        (function () {
-            if (localStorage.getItem('theme') === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-        })();
-    </script>
 </head>
 <body>
 
     <div class="wrap">
 
-        <header class="top">
-            <span class="tag">Security Research</span>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                <i class="icon-moon">&#9789;</i>
-                <i class="icon-sun">&#9728;</i>
-            </button>
+        <header class="profile">
+            <!--
+              Avatar: drop your own image at img/avatar.jpg and it will be used
+              automatically. Until then the placeholder img/avatar.svg is shown.
+            -->
+            <div class="avatar">
+                <img src="img/avatar.jpg" alt="Saud Alanazi" onerror="this.onerror=null;this.src='img/avatar.svg'">
+            </div>
+
+            <h1>Saud</h1>
+            <p class="role">Web security researcher</p>
+
+            <nav class="links">
+                <a href="https://twitter.com/reouii" target="_blank" rel="noopener">X (@reouii)</a>
+                <a href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener">LinkedIn</a>
+            </nav>
         </header>
 
-        <!-- Hero -->
-        <section class="hero">
-            <h1>
-                <span class="l1">Saud</span>
-                <span class="l2">Alanazi</span>
-            </h1>
-            <div class="hero-meta">
-                <p class="role">Security Researcher</p>
-                <p class="intro">I research web application security — business-logic flaws, injection points, and broken access control — and write up what I find.</p>
-            </div>
-        </section>
+        <hr>
 
-        <!-- 01 — Research -->
-        <section class="section" id="research">
-            <div class="sec-head">
-                <span class="num grad-text">01</span>
-                <h2>Research &amp; Write-ups</h2>
-            </div>
+        <section class="posts">
 
-            <p class="empty">Nothing published yet — write-ups and research land here as soon as they're ready.</p>
+            <article class="post">
+                <h2>Coming soon</h2>
+                <p>Write-ups from vulnerabilities I found and reported will be posted here.</p>
+            </article>
 
             <!--
-              When ready, replace the .empty paragraph above with this list,
-              and add one <li> per write-up:
+              Add one <article> per write-up, newest first. Example:
 
-              <ul class="posts">
-                  <li>
-                      <a href="research/example.html">
-                          <span class="idx">01</span>
-                          <span class="t">Write-up title</span>
-                          <span class="d">Jan 2026</span>
-                      </a>
-                  </li>
-              </ul>
+              <article class="post">
+                  <a href="research/xs-leaks-part-1.html">
+                      <h2>The Art of XS-Leak Attacks - Part 1</h2>
+                      <p>A deep dive into XS-Leak attacks and how they work internally in Chromium.</p>
+                      <span class="date">June 2026</span>
+                  </a>
+              </article>
             -->
+
         </section>
-
-        <!-- 02 — Contact -->
-        <section class="section" id="contact">
-            <div class="sec-head">
-                <span class="num grad-text">02</span>
-                <h2>Contact</h2>
-            </div>
-
-            <div class="contact-grid">
-                <a href="https://twitter.com/reouii" target="_blank" rel="noopener">
-                    <span class="k">X / Twitter</span>
-                    <span class="v">@reouii</span>
-                </a>
-                <a href="https://linkedin.com/in/0xSaud" target="_blank" rel="noopener">
-                    <span class="k">LinkedIn</span>
-                    <span class="v">0xSaud</span>
-                </a>
-            </div>
-        </section>
-
-        <footer>
-            <span>&copy; 2026 Saud Alanazi</span>
-            <span>Riyadh</span>
-        </footer>
 
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
