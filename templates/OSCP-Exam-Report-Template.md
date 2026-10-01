@@ -104,7 +104,7 @@ This phase focused on gaining initial access to each system, escalating privileg
 
 ## House Cleaning
 
-After the objectives were completed, all files, user accounts and services created during testing were removed from the compromised systems. [List anything you created and removed, e.g. uploaded binaries in C:\Windows\Temp, added users.]
+After the objectives were completed, all files, user accounts and services created during testing were removed from the compromised systems. [List anything you created and removed, e.g. uploaded binaries in `C:\Windows\Temp`, added users.]
 
 \newpage
 
