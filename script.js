@@ -1,50 +1,39 @@
 (function () {
-    var sheet = document.getElementById('sheet');
-    if (!sheet) return;
+    var viewer = document.getElementById('viewer');
+    if (!viewer || typeof viewer.showModal !== 'function') return;
 
-    // Today's date in the dateline.
-    var today = document.getElementById('today');
-    if (today) {
-        today.textContent = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    var img = viewer.querySelector('img');
+    var title = viewer.querySelector('.viewer-title');
+    var sub = viewer.querySelector('.viewer-sub');
+    var links = Array.prototype.slice.call(document.querySelectorAll('#certs a.what'));
+    var at = 0;
+
+    function show(i) {
+        at = (i + links.length) % links.length;
+        var a = links[at];
+        var s = a.querySelector('.sub');
+        img.src = a.getAttribute('href');
+        title.textContent = a.firstChild.textContent.trim();
+        sub.textContent = s ? s.textContent : '';
+        img.alt = title.textContent + ' certificate';
     }
 
-    // Uneven typewriter ink: each letter gets a slightly different strength
-    // and sits a hair off the baseline. Seeded, so the page looks the same
-    // on every visit. Nothing moves.
-    var seed = 20260930;
-    function rand() {
-        seed = (seed * 1664525 + 1013904223) % 4294967296;
-        return seed / 4294967296;
-    }
-
-    var walker = document.createTreeWalker(sheet, NodeFilter.SHOW_TEXT, {
-        acceptNode: function (n) {
-            if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-            if (n.parentNode.closest('.stamp, .sig')) return NodeFilter.FILTER_REJECT;
-            return NodeFilter.FILTER_ACCEPT;
-        }
+    links.forEach(function (a, i) {
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            show(i);
+            viewer.showModal();
+        });
     });
 
-    var nodes = [];
-    var n;
-    while ((n = walker.nextNode())) nodes.push(n);
+    viewer.querySelector('.viewer-close').addEventListener('click', function () { viewer.close(); });
+    viewer.querySelector('.viewer-prev').addEventListener('click', function () { show(at - 1); });
+    viewer.querySelector('.viewer-next').addEventListener('click', function () { show(at + 1); });
 
-    nodes.forEach(function (node) {
-        var text = node.nodeValue.replace(/\s+/g, ' ');
-        var frag = document.createDocumentFragment();
-        for (var i = 0; i < text.length; i++) {
-            var ch = text[i];
-            if (ch === ' ') {
-                frag.appendChild(document.createTextNode(' '));
-                continue;
-            }
-            var s = document.createElement('span');
-            s.className = 'ch';
-            s.textContent = ch;
-            s.style.opacity = (0.72 + rand() * 0.28).toFixed(2);
-            s.style.top = ((rand() - 0.5) * 1.2).toFixed(2) + 'px';
-            frag.appendChild(s);
-        }
-        node.parentNode.replaceChild(frag, node);
+    viewer.addEventListener('click', function (e) { if (e.target === viewer) viewer.close(); });
+
+    viewer.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') show(at - 1);
+        else if (e.key === 'ArrowRight') show(at + 1);
     });
 })();
